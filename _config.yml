@@ -1,17 +1,6 @@
 title: AERO internal documentation
 theme: jekyll-theme-cayman
 
-toc:
-  - title: Knowledge Base
-    subfolderitems:
-      - page: Airframe Reference
-        url: /airframe_ref.md
-      - page: Autopilot Reference
-        url: /autopilot_ref.md
-      - page: Sensor Reference
-        url: /sensor_ref.md
-
-
 plugins:
   - jekyll-relative-links
 relative_links:
