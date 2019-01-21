@@ -1,1 +1,14 @@
 theme: jekyll-theme-cayman
+
+site_name: AERO internal documentation
+nav:
+    - Home: index.md
+    - Basic Setup: 
+      - 'Wiring quickstart': 'ref/wiring_ref.md'
+    - PX4 Reference Info:
+      - Vehicles and Airframes: 'ref/airframe_ref.md'
+      - Autopilot Hardware: 'ref/autopilot_ref.md'
+      - Sensors: 'ref/sensor_ref.md'
+    - Software Dev:
+      - 'Logging and log analysis': 'dev/log_dev.md'
+      - 'Mavlink Development': 'dev/mavlink_dev.md'
