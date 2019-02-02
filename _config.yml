@@ -1,5 +1,7 @@
 title: AERO internal documentation
 theme: jekyll-theme-cayman
+description: July 2017
+baseurl: /McGillAerospaceDesignSociety.github.io
 
 plugins:
   - jekyll-relative-links
