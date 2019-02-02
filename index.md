@@ -13,3 +13,5 @@ toc:
 # AERO Internal Documentation
 
 Documentation for system and software development in McGill AERO Design Team
+
+For user's information on some common autopilots in use by Aero McGill, click [here](https://mcgillaerospacedesignsociety.github.io/autopilot_ref)
