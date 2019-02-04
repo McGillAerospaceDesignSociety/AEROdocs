@@ -80,6 +80,8 @@ The following table labels each pin from left to right when the X2.1 autopilot's
 
 The RFD900X is a long range radio modem capable of PPM passthrough. 
 
+![RFD](/Graphics/RFD.png)
+
 | Pin # | Name | Description | Pin # | Name | Description |
 |-------|------|---------------|-------|------|--------------|
 | 1 | GND | Ground | 2 | GND | Ground |
@@ -133,6 +135,8 @@ Autopilots and telemetry radios interface with the Raspberry Pi via the serial p
 
 ## HolyBro M8N GPS
 The [HolyBro M8N GPS](https://www.getfpv.com/holybro-micro-m8n-gps-module.html) is fairly common due to its M8N chipset, good performance, and good plastic enclosure. However, its pinout is unconventional
+
+![M8N](/Graphics/M8N.png)
 
 | Name | Description |
 |------|--------------|
