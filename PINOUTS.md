@@ -2,6 +2,8 @@
 ## Omnibus F4V5
 The Omnibus F4V5 is a common AIO autopilot with very small footprint. It can run either Ardupilot (Copter 3.6 or higher), or Betaflight for better racing performance.
 
+![Omnibus](/Graphics/Omnibus.png)
+
 ### Rear headers
 Omnibus F4 V5 (version 5) uses pin headers to interface with peripherals and external modules
 
@@ -49,6 +51,8 @@ Bridge the 3V/5V solder jumper very close to the 3V/5V pin to the 5V side. This 
 
 # mRobotics X2.1
 The mRobotics X2.1 is reduced version of PixHawk 1 with better sensors and more flexibility. This goal is achieved by using pin headers to interface with peripherals and external modules
+
+![X2.1](/Graphics/X2.1.png)
 
 ### Front headers
 The front headers contain pins for the following ports: Telem2, Serial4, Serial5, ADC1/2, Airspeed sensor, RC input, SBUS output, Spektrum input.
