@@ -1,33 +1,5 @@
-# Raspberry Pi
-The Raspberry Pi is a common single-board computer. It can be used in an UAS application as a companion computer to carry out computer vision tasks, or act as a WiFi bridge
-
-| Pin # | Name | Description | Pin # | Name | Description |
-|-------|--------|---------------|-------|--------|---------------|
-| 1 | 3V3 | 3V3 Power | 2 | 5V | 5V Power |
-| 3 | SDA | I2C SDA | 4 | 5V | 5V Power |
-| 5 | SCL | I2C SCL | 6 | GND | Ground |
-| 7 | GPIO4 | GPIO | 8 | Tx | Serial Tx |
-| 9 | GND | Ground | 10 | Rx | Serial Rx |
-| 11 | GPIO17 | GPIO | 12 | PWM0 | PWM output |
-| 13 | GPIO27 | GPIO | 14 | GND | Ground |
-| 15 | GPIO22 | GPIO | 16 | GPIO23 | GPIO |
-| 17 | 3V3 | 3V3 Power | 18 | GPIO24 | GPIO |
-| 19 | MOSI | SPI MOSI | 20 | GND | Ground |
-| 21 | MISO | SPI MISO | 22 | GPIO25 | GPIO |
-| 23 | CLK | SPI CLK | 24 | CE0 | Chip Select 0 |
-| 25 | GND | Ground | 26 | CE1 | Chip Select 1 |
-| 27 | ID_SD | I2C ID EEPROM | 28 | ID_DC | I2C ID EEPROM |
-| 29 | GPIO5 | GPIO | 30 | GND | Ground |
-| 31 | GPIO6 | GPIO | 32 | GPIO12 | GPIO |
-| 33 | GPIO13 | GPIO | 34 | GND | Ground |
-| 35 | GPIO19 | GPIO | 36 | GPIO16 | GPIO |
-| 37 | GPIO26 | GPIO | 38 | GPIO20 | GPIO |
-| 39 | GND | Ground | 40 | GPIO21 | GPIO |
-
-### Serial connection
-Autopilots and telemetry radios interface with the Raspberry Pi via the serial port. Connect the external device __Rx__ to __Pin 8 Tx__, and its __Tx__ to __Pin 10 Rx__
-
-# Omnibus F4V5
+# Autopilots
+## Omnibus F4V5
 The Omnibus F4V5 is a common AIO autopilot with very small footprint. It can run either Ardupilot (Copter 3.6 or higher), or Betaflight for better racing performance.
 
 ### Rear headers
@@ -56,16 +28,24 @@ The side headers contain pins for the flight controller's internal OSD.
 | RAM | Video Power | RAM | Video Power |
 | AGND | Analog Ground | AGND | Analog |
 
+### Motor output JST-SH Socket
+A JST-SH socket is provided for easy connection to 4-in-1 ESCs
+
+| Name | Description |
+|------|---------------|
+| VBat | Battery Power |
+| Rx1 | Serial1 Rx |
+| GND | Ground |
+| NC | Not Connected |
+| PWM1 | PWM output |
+| PWM2 | PWM output |
+| PWM3 | PWM output |
+| PWM4 | PWM output |
+
 ### Power output pins
-The Omnibus F4 normally does not provide video power. Use a jumper to connect __RAM__ on the rear headers to either __VBat__ or __5VP__. This feeds respectively battery power or 5V power to the RAM pin to power cameras or video transmitters.
+Use a jumper to connect __RAM__ on the rear headers to either __VBat__ or __5VP__. This feeds respectively battery power or 5V power to the RAM pin to power cameras or video transmitters.
 
 Bridge the 3V/5V solder jumper very close to the 3V/5V pin to the 5V side. This is necessary because most GPS units use 5V input. 
-
-### Omnibus F4 serial port usage
-The Omnibus F4 has only 2 serial ports available. To enable full GPS navigation with bidirectional telemetry with ArduPilot, use serial ports as follows
-
-* Connect Serial1 pins to telemetry modem; Leave CTS and RTS on the modem unconnected
-* Connect Serial3 pins to GPS serial port and I2C pins to the external compass's I2C port
 
 # mRobotics X2.1
 The mRobotics X2.1 is reduced version of PixHawk 1 with better sensors and more flexibility. This goal is achieved by using pin headers to interface with peripherals and external modules
@@ -90,7 +70,9 @@ The following table labels each pin from left to right when the X2.1 autopilot's
 | Tx | Serial4 Tx | Tx | Serial2 Tx | Tx | Serial5 Tx |
 | 5VP | 5V Power | 5VP | 5V Power | 5VP | 5V Power |
 
-# RFD900X
+# Radios and Transceivers
+
+## RFD900X
 
 The RFD900X is a long range radio modem capable of PPM passthrough. 
 
@@ -112,3 +94,47 @@ To power the modem via a USB-FTDI cable, use a jumper to connect __pin 4__ and _
 
 ### Bootloader pads
 The __SWO__ pad is above pin 16. To force the modem into bootloader mode, join it to ground by bridging it with __pin 16 GND__ or the __RESET__ pad next to it
+
+# Companion Computers
+## Raspberry Pi
+The Raspberry Pi is a common single-board computer. It can be used in an UAS application as a companion computer to carry out computer vision tasks, or act as a WiFi bridge
+
+| Pin # | Name | Description | Pin # | Name | Description |
+|-------|--------|---------------|-------|--------|---------------|
+| 1 | 3V3 | 3V3 Power | 2 | 5V | 5V Power |
+| 3 | SDA | I2C SDA | 4 | 5V | 5V Power |
+| 5 | SCL | I2C SCL | 6 | GND | Ground |
+| 7 | GPIO4 | GPIO | 8 | Tx | Serial Tx |
+| 9 | GND | Ground | 10 | Rx | Serial Rx |
+| 11 | GPIO17 | GPIO | 12 | PWM0 | PWM output |
+| 13 | GPIO27 | GPIO | 14 | GND | Ground |
+| 15 | GPIO22 | GPIO | 16 | GPIO23 | GPIO |
+| 17 | 3V3 | 3V3 Power | 18 | GPIO24 | GPIO |
+| 19 | MOSI | SPI MOSI | 20 | GND | Ground |
+| 21 | MISO | SPI MISO | 22 | GPIO25 | GPIO |
+| 23 | CLK | SPI CLK | 24 | CE0 | Chip Select 0 |
+| 25 | GND | Ground | 26 | CE1 | Chip Select 1 |
+| 27 | ID_SD | I2C ID EEPROM | 28 | ID_DC | I2C ID EEPROM |
+| 29 | GPIO5 | GPIO | 30 | GND | Ground |
+| 31 | GPIO6 | GPIO | 32 | GPIO12 | GPIO |
+| 33 | GPIO13 | GPIO | 34 | GND | Ground |
+| 35 | GPIO19 | GPIO | 36 | GPIO16 | GPIO |
+| 37 | GPIO26 | GPIO | 38 | GPIO20 | GPIO |
+| 39 | GND | Ground | 40 | GPIO21 | GPIO |
+
+### Serial connection
+Autopilots and telemetry radios interface with the Raspberry Pi via the serial port. Connect the external device __Rx__ to __Pin 8 Tx__, and its __Tx__ to __Pin 10 Rx__
+
+# Others
+
+## HolyBro M8N GPS
+The [HolyBro M8N GPS](https://www.getfpv.com/holybro-micro-m8n-gps-module.html) is fairly common due to its M8N chipset, good performance, and good plastic enclosure. However, its pinout is unconventional
+
+| Name | Description |
+|------|--------------|
+| SCL | I2C SCL |
+| SDA | I2C SDA |
+| Vcc | Power Supply |
+| Rx | Serial Rx |
+| Tx | Serial Tx |
+| GND | Ground |
