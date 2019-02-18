@@ -1,0 +1,252 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>DragonLink &#8212; AERO-McGill  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Autopilots" href="../pinouts/pinouts.html" />
+    <link rel="prev" title="VTOL airframe" href="../vehicleEval/vtol_airframe.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="dragonlink">
+<h1>DragonLink<a class="headerlink" href="#dragonlink" title="Permalink to this headline">¶</a></h1>
+<p>DragonLink is a 433MHz UHF RC system</p>
+<div class="section" id="quick-start-checklist">
+<h2>Quick Start Checklist<a class="headerlink" href="#quick-start-checklist" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li>Connect the DragonLink Transmitter to the RC transmitter. Signal, Power and Ground must all be connected</li>
+<li></li>
+</ol>
+</div>
+<div class="section" id="configuration-menu">
+<h2>Configuration Menu<a class="headerlink" href="#configuration-menu" title="Permalink to this headline">¶</a></h2>
+<p>The Bind/Menu button on top of the DragonLink provides access to important configuration options listed below.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Option</th>
+<th>LED Indicator</th>
+<th>Beeper Indicator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range Test</td>
+<td>Green</td>
+<td>1 beep</td>
+</tr>
+<tr>
+<td>Bind Mode</td>
+<td>Blue</td>
+<td>2 beeps</td>
+</tr>
+<tr>
+<td>Servo Test</td>
+<td>Yellow</td>
+<td>3 beeps</td>
+</tr>
+<tr>
+<td>Change Tx ID</td>
+<td>Red</td>
+<td>4 beeps</td>
+</tr>
+<tr>
+<td>Exit USB Telem mode</td>
+<td>White</td>
+<td>5 beeps</td>
+</tr>
+</tbody>
+</table><p>Press the Menu button while powering on the transmitter, then keep the button pressed to move down these options. Release the button upon seeing/hearing the associated LED/beeper indicator to select an option.</p>
+<div class="section" id="range-test-mode">
+<h3>Range Test Mode<a class="headerlink" href="#range-test-mode" title="Permalink to this headline">¶</a></h3>
+<p>Tip: Conducting a range test helps diagnosing faults, interference and misconfiguration that can potentially cause a crash</p>
+<p>Range test mode greatly reduces RF transmitting power to simulate the effects of extreme range.</p>
+<p>Procedure:</p>
+<ol>
+<li><p class="first">Select Range Test Mode using the Menu Button</p>
+</li>
+<li><p class="first">Orient the transmitter with the antenna vertical</p>
+</li>
+<li><p class="first">Carry the model aircraft away from the transmitter, keeping the aircraft oriented as if under normal flight conditions</p>
+</li>
+<li><p class="first">Monitor the LED state on the transmitter, which indicates a loss of signal by turning Off.</p>
+<p>a. LED On - Excellent Signal</p>
+<p>b. LED Flickering - Acceptable Signal</p>
+<p>c. LED Off for 50% of the time - Poor signal, range limit reached</p>
+</li>
+<li><p class="first">Upon reaching the range limit, measure distance between transmitter and model aircraft</p>
+</li>
+<li><p class="first">In normal conditions, maximum range achievable in Range Test mode is approximately 10m (30ft). If less than 5m (15ft) range can be achieved, check setup and do not fly.</p>
+</li>
+<li><p class="first">Press the menu button to exit Range Test Mode</p>
+</li>
+</ol>
+<p>Troubleshooting: Range tests should be conducted on-location, with a clear line-of-sight and with environmental conditions matching those of the planned flight.</p>
+</div>
+<div class="section" id="bind-mode">
+<h3>Bind Mode<a class="headerlink" href="#bind-mode" title="Permalink to this headline">¶</a></h3>
+<p>Bind Mode allows binding the transmitter to a receiver without a computer running the GUI configurator.</p>
+<p>Procedure:</p>
+<ol class="simple">
+<li>Select Bind Mode using the Menu Button</li>
+<li>Power on the receiver</li>
+<li>Successful binding is indicated by flashing Blue and Green LEDs on the receiver</li>
+<li>Power cycle both transmitter and receiver after successful binding</li>
+</ol>
+</div>
+<div class="section" id="servo-test-mode">
+<h3>Servo Test Mode<a class="headerlink" href="#servo-test-mode" title="Permalink to this headline">¶</a></h3>
+<p>Servo Test Mode sweeps all channels between maximum and minimum signal values.</p>
+<p>Warning: Disconnect motors and remove propellers before conducting Servo Test!</p>
+<p>Procedure:</p>
+<ol class="simple">
+<li>Select Servo Test Mode using the Menu Button</li>
+<li>Check servo travel of each servo</li>
+<li>Press the menu button to exit Servo Test Mode</li>
+</ol>
+</div>
+<div class="section" id="change-transmitter-id">
+<h3>Change Transmitter ID<a class="headerlink" href="#change-transmitter-id" title="Permalink to this headline">¶</a></h3>
+<p>Changing the Transmitter ID allows multiple DragonLink transmitters with different IDs to be used at the same time.</p>
+<p>Procedure:</p>
+<ol class="simple">
+<li>Select Change Transmitter ID using the Menu Button</li>
+<li>Successful ID change is indicated by flashing red LED on the transmitter</li>
+<li>Power cycle the transmitter after changing transmitter ID</li>
+</ol>
+</div>
+<div class="section" id="exit-usb-telemetry-mode">
+<h3>Exit USB Telemetry Mode<a class="headerlink" href="#exit-usb-telemetry-mode" title="Permalink to this headline">¶</a></h3>
+<p>Exiting USB Telemetry Mode sets the USB port to function as interface to GUI configurator instead of to Ground Control Station</p>
+<p>Procedure:</p>
+<ol class="simple">
+<li>Select Exit USB Telemetry Mode using the Menu Button</li>
+<li>Successful USB function change is indicated by flashing white LED on the transmitter and the power up tone playing</li>
+<li>Power cycle the transmitter after exiting USB telemetry mode</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">AERO-McGill</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">vehicle_eval</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/vehicle_eval.html">Vehicle Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/mc_airframe.html">Multicopter Airframes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/vtol_airframe.html">VTOL airframe</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Radio Systems</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DragonLink</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start-checklist">Quick Start Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-menu">Configuration Menu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#range-test-mode">Range Test Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bind-mode">Bind Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#servo-test-mode">Servo Test Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-transmitter-id">Change Transmitter ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exit-usb-telemetry-mode">Exit USB Telemetry Mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Pinout</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html">Autopilots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#radios-and-transceivers">Radios and Transceivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#companion-computers">Companion Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#others">Others</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../vehicleEval/vtol_airframe.html" title="previous chapter">VTOL airframe</a></li>
+      <li>Next: <a href="../pinouts/pinouts.html" title="next chapter">Autopilots</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Hs293Go.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/docs/radioSystems/dragon_link.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

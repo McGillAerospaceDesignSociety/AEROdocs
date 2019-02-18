@@ -1,0 +1,768 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Autopilots &#8212; AERO-McGill  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="DragonLink" href="../radioSystems/dragon_link.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="autopilots">
+<h1>Autopilots<a class="headerlink" href="#autopilots" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="omnibus-f4v5">
+<h2>Omnibus F4V5<a class="headerlink" href="#omnibus-f4v5" title="Permalink to this headline">¶</a></h2>
+<p>The Omnibus F4V5 is a common AIO autopilot with very small footprint. It can run either Ardupilot (Copter 3.6 or higher), or Betaflight for better racing performance.</p>
+<p><img alt="../../_images/Omnibus.png" src="../../_images/Omnibus.png" />Omnibus</p>
+<div class="section" id="rear-headers">
+<h3>Rear headers<a class="headerlink" href="#rear-headers" title="Permalink to this headline">¶</a></h3>
+<p>Omnibus F4 V5 (version 5) uses pin headers to interface with peripherals and external modules</p>
+<p>The following table labels each pin from left to right when the Omnibus F4’s heading arrow points forward from the reader’s point of view</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Name</th>
+<th>Description</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+<td>5VP</td>
+<td>5V Power</td>
+<td>LED Strip</td>
+<td>Addressable LED</td>
+</tr>
+<tr>
+<td>Buz-</td>
+<td>Buzzer -ve</td>
+<td>Buz+</td>
+<td>Buzzer +ve</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+<td>VBat</td>
+<td>Battery Power</td>
+<td>5VP</td>
+<td>5V Power</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+<td>Curr</td>
+<td>Current Sensor</td>
+<td>SCL</td>
+<td>I2C SCL</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+<td>RSSI</td>
+<td>RSSI Input</td>
+<td>SDA</td>
+<td>I2C SDA</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+<td>GND</td>
+<td>Ground</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>5VP</td>
+<td>5V Power</td>
+<td>5VP</td>
+<td>5V Power</td>
+<td>3V/5V</td>
+<td>3.3/5V Power</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>Video Power</td>
+<td>Tx1</td>
+<td>Serial1 Tx</td>
+<td>Tx</td>
+<td>Serial3 Tx</td>
+</tr>
+<tr>
+<td>VBat</td>
+<td>Battery Power</td>
+<td>Power</td>
+<td>Serial1 Rx</td>
+<td>Rx</td>
+<td>Serial3 Rx</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="side-headers">
+<h3>Side headers<a class="headerlink" href="#side-headers" title="Permalink to this headline">¶</a></h3>
+<p>The side headers contain pins for the flight controller’s internal OSD.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vin</td>
+<td>Camera pin</td>
+<td>Vout</td>
+<td>VTx pin</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>Video Power</td>
+<td>RAM</td>
+<td>Video Power</td>
+</tr>
+<tr>
+<td>AGND</td>
+<td>Analog Ground</td>
+<td>AGND</td>
+<td>Analog</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="motor-output-jst-sh-socket">
+<h3>Motor output JST-SH Socket<a class="headerlink" href="#motor-output-jst-sh-socket" title="Permalink to this headline">¶</a></h3>
+<p>A JST-SH socket is provided for easy connection to 4-in-1 ESCs</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VBat</td>
+<td>Battery Power</td>
+</tr>
+<tr>
+<td>Rx1</td>
+<td>Serial1 Rx</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>NC</td>
+<td>Not Connected</td>
+</tr>
+<tr>
+<td>PWM1</td>
+<td>PWM output</td>
+</tr>
+<tr>
+<td>PWM2</td>
+<td>PWM output</td>
+</tr>
+<tr>
+<td>PWM3</td>
+<td>PWM output</td>
+</tr>
+<tr>
+<td>PWM4</td>
+<td>PWM output</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="power-output-pins">
+<h3>Power output pins<a class="headerlink" href="#power-output-pins" title="Permalink to this headline">¶</a></h3>
+<p>Use a jumper to connect <strong>RAM</strong> on the rear headers to either <strong>VBat</strong> or <strong>5VP</strong>. This feeds respectively battery power or 5V power to the RAM pin to power cameras or video transmitters.</p>
+<p>Bridge the 3V/5V solder jumper very close to the 3V/5V pin to the 5V side. This is necessary because most GPS units use 5V input.</p>
+</div>
+</div>
+<div class="section" id="mrobotics-x2-1">
+<h2>mRobotics X2.1<a class="headerlink" href="#mrobotics-x2-1" title="Permalink to this headline">¶</a></h2>
+<p>The mRobotics X2.1 is reduced version of PixHawk 1 with better sensors and more flexibility. This goal is achieved by using pin headers to interface with peripherals and external modules</p>
+<p><img alt="../../_images/X2.1.png" src="../../_images/X2.1.png" />X2.1</p>
+<div class="section" id="front-headers">
+<h3>Front headers<a class="headerlink" href="#front-headers" title="Permalink to this headline">¶</a></h3>
+<p>The front headers contain pins for the following ports: Telem2, Serial4, Serial5, ADC1/2, Airspeed sensor, RC input, SBUS output, Spektrum input.</p>
+<p>The following table labels each pin from left to right when the X2.1 autopilot’s heading arrow points forward from the reader’s point of view</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Name</th>
+<th>Description</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U1Rx</td>
+<td>Spektrum input</td>
+<td>GND</td>
+<td>Ground</td>
+<td>VCC Spk</td>
+<td>3.3V Power</td>
+</tr>
+<tr>
+<td>SORI</td>
+<td>Sbus out/RSSI in</td>
+<td>NC</td>
+<td>Not connected</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>SIPI</td>
+<td>Sbus in/PPM in</td>
+<td>Vcc Rx</td>
+<td>Power Supply</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>AIR</td>
+<td>Airspeed input</td>
+<td>5VP</td>
+<td>5V Power</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>KILL</td>
+<td>Unimplemented</td>
+<td>5VP</td>
+<td>5V Power</td>
+<td>Buzz</td>
+<td>Buzzer Driver</td>
+</tr>
+<tr>
+<td>SAFE</td>
+<td>Safety Switch</td>
+<td>LED</td>
+<td>LED Driver</td>
+<td>IO3V3</td>
+<td>3.3V power</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+<td>GND</td>
+<td>Ground</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>ADC2</td>
+<td>ADC input</td>
+<td>P2.2</td>
+<td>Ready to Send</td>
+<td>ADC2</td>
+<td>ADC input</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+<td>CTS</td>
+<td>Clear to Send</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>Rx</td>
+<td>Serial4 Rx</td>
+<td>Rx</td>
+<td>Serial2 Rx</td>
+<td>Rx</td>
+<td>Serial5 Rx</td>
+</tr>
+<tr>
+<td>Tx</td>
+<td>Serial4 Tx</td>
+<td>Tx</td>
+<td>Serial2 Tx</td>
+<td>Tx</td>
+<td>Serial5 Tx</td>
+</tr>
+<tr>
+<td>5VP</td>
+<td>5V Power</td>
+<td>5VP</td>
+<td>5V Power</td>
+<td>5VP</td>
+<td>5V Power</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="section" id="radios-and-transceivers">
+<h1>Radios and Transceivers<a class="headerlink" href="#radios-and-transceivers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rfd900x">
+<h2>RFD900X<a class="headerlink" href="#rfd900x" title="Permalink to this headline">¶</a></h2>
+<p>The RFD900X is a long range radio modem capable of PPM passthrough.</p>
+<p><img alt="../../_images/RFD.png" src="../../_images/RFD.png" />RFD</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Pin #</th>
+<th>Name</th>
+<th>Description</th>
+<th>Pin #</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GND</td>
+<td>Ground</td>
+<td>2</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>3</td>
+<td>CTS</td>
+<td>Clear to Send</td>
+<td>4</td>
+<td>Vcc</td>
+<td>Power Supply</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Vusb</td>
+<td>USB Power</td>
+<td>6</td>
+<td>Vusb</td>
+<td>USB Power</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Rx</td>
+<td>UART Rx</td>
+<td>8</td>
+<td>P2.3</td>
+<td>GPIO</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Tx</td>
+<td>UART Tx</td>
+<td>10</td>
+<td>P2.2</td>
+<td>GPIO</td>
+</tr>
+<tr>
+<td>11</td>
+<td>RTS</td>
+<td>Ready to Send</td>
+<td>12</td>
+<td>P2.1</td>
+<td>GPIO</td>
+</tr>
+<tr>
+<td>13</td>
+<td>P0.1</td>
+<td>GPIO</td>
+<td>14</td>
+<td>P2.0</td>
+<td>GPIO</td>
+</tr>
+<tr>
+<td>15</td>
+<td>P1.1</td>
+<td>GPIO with PPM</td>
+<td>16</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+</tbody>
+</table><div class="section" id="power-input-pins">
+<h3>Power input pins<a class="headerlink" href="#power-input-pins" title="Permalink to this headline">¶</a></h3>
+<p>To power the modem from an external +5V supply, connect +5V power input to <strong>pin 4 Vcc</strong>, and ground to <strong>pin 2</strong></p>
+<p>To power the modem via a USB-FTDI cable, use a jumper to connect <strong>pin 4</strong> and <strong>pin 6</strong>. This feeds +5V on <strong>Vusb</strong> into <strong>Vcc</strong></p>
+</div>
+<div class="section" id="bootloader-pads">
+<h3>Bootloader pads<a class="headerlink" href="#bootloader-pads" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>SWO</strong> pad is above pin 16. To force the modem into bootloader mode, join it to ground by bridging it with <strong>pin 16 GND</strong> or the <strong>RESET</strong> pad next to it</p>
+</div>
+</div>
+</div>
+<div class="section" id="companion-computers">
+<h1>Companion Computers<a class="headerlink" href="#companion-computers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="raspberry-pi">
+<h2>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Permalink to this headline">¶</a></h2>
+<p>The Raspberry Pi is a common single-board computer. It can be used in an UAS application as a companion computer to carry out computer vision tasks, or act as a WiFi bridge</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Pin #</th>
+<th>Name</th>
+<th>Description</th>
+<th>Pin #</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>3V3</td>
+<td>3V3 Power</td>
+<td>2</td>
+<td>5V</td>
+<td>5V Power</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SDA</td>
+<td>I2C SDA</td>
+<td>4</td>
+<td>5V</td>
+<td>5V Power</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SCL</td>
+<td>I2C SCL</td>
+<td>6</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>7</td>
+<td>GPIO4</td>
+<td>GPIO</td>
+<td>8</td>
+<td>Tx</td>
+<td>Serial Tx</td>
+</tr>
+<tr>
+<td>9</td>
+<td>GND</td>
+<td>Ground</td>
+<td>10</td>
+<td>Rx</td>
+<td>Serial Rx</td>
+</tr>
+<tr>
+<td>11</td>
+<td>GPIO17</td>
+<td>GPIO</td>
+<td>12</td>
+<td>PWM0</td>
+<td>PWM output</td>
+</tr>
+<tr>
+<td>13</td>
+<td>GPIO27</td>
+<td>GPIO</td>
+<td>14</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>15</td>
+<td>GPIO22</td>
+<td>GPIO</td>
+<td>16</td>
+<td>GPIO23</td>
+<td>GPIO</td>
+</tr>
+<tr>
+<td>17</td>
+<td>3V3</td>
+<td>3V3 Power</td>
+<td>18</td>
+<td>GPIO24</td>
+<td>GPIO</td>
+</tr>
+<tr>
+<td>19</td>
+<td>MOSI</td>
+<td>SPI MOSI</td>
+<td>20</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>21</td>
+<td>MISO</td>
+<td>SPI MISO</td>
+<td>22</td>
+<td>GPIO25</td>
+<td>GPIO</td>
+</tr>
+<tr>
+<td>23</td>
+<td>CLK</td>
+<td>SPI CLK</td>
+<td>24</td>
+<td>CE0</td>
+<td>Chip Select 0</td>
+</tr>
+<tr>
+<td>25</td>
+<td>GND</td>
+<td>Ground</td>
+<td>26</td>
+<td>CE1</td>
+<td>Chip Select 1</td>
+</tr>
+<tr>
+<td>27</td>
+<td>ID_SD</td>
+<td>I2C ID EEPROM</td>
+<td>28</td>
+<td>ID_DC</td>
+<td>I2C ID EEPROM</td>
+</tr>
+<tr>
+<td>29</td>
+<td>GPIO5</td>
+<td>GPIO</td>
+<td>30</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>31</td>
+<td>GPIO6</td>
+<td>GPIO</td>
+<td>32</td>
+<td>GPIO12</td>
+<td>GPIO</td>
+</tr>
+<tr>
+<td>33</td>
+<td>GPIO13</td>
+<td>GPIO</td>
+<td>34</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>35</td>
+<td>GPIO19</td>
+<td>GPIO</td>
+<td>36</td>
+<td>GPIO16</td>
+<td>GPIO</td>
+</tr>
+<tr>
+<td>37</td>
+<td>GPIO26</td>
+<td>GPIO</td>
+<td>38</td>
+<td>GPIO20</td>
+<td>GPIO</td>
+</tr>
+<tr>
+<td>39</td>
+<td>GND</td>
+<td>Ground</td>
+<td>40</td>
+<td>GPIO21</td>
+<td>GPIO</td>
+</tr>
+</tbody>
+</table><div class="section" id="serial-connection">
+<h3>Serial connection<a class="headerlink" href="#serial-connection" title="Permalink to this headline">¶</a></h3>
+<p>Autopilots and telemetry radios interface with the Raspberry Pi via the serial port. Connect the external device <strong>Rx</strong> to <strong>Pin 8 Tx</strong>, and its <strong>Tx</strong> to <strong>Pin 10 Rx</strong></p>
+</div>
+</div>
+</div>
+<div class="section" id="others">
+<h1>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="holybro-m8n-gps">
+<h2>HolyBro M8N GPS<a class="headerlink" href="#holybro-m8n-gps" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://www.getfpv.com/holybro-micro-m8n-gps-module.html">HolyBro M8N GPS</a> is fairly common due to its M8N chipset, good performance, and good plastic enclosure. However, its pinout is unconventional</p>
+<p><img alt="../../_images/M8N.png" src="../../_images/M8N.png" />M8N</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCL</td>
+<td>I2C SCL</td>
+</tr>
+<tr>
+<td>SDA</td>
+<td>I2C SDA</td>
+</tr>
+<tr>
+<td>Vcc</td>
+<td>Power Supply</td>
+</tr>
+<tr>
+<td>Rx</td>
+<td>Serial Rx</td>
+</tr>
+<tr>
+<td>Tx</td>
+<td>Serial Tx</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">AERO-McGill</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">vehicle_eval</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/vehicle_eval.html">Vehicle Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/mc_airframe.html">Multicopter Airframes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/vtol_airframe.html">VTOL airframe</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Radio Systems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../radioSystems/dragon_link.html">DragonLink</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Pinout</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Autopilots</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#omnibus-f4v5">Omnibus F4V5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rear-headers">Rear headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#side-headers">Side headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#motor-output-jst-sh-socket">Motor output JST-SH Socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#power-output-pins">Power output pins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mrobotics-x2-1">mRobotics X2.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#front-headers">Front headers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#radios-and-transceivers">Radios and Transceivers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rfd900x">RFD900X</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#power-input-pins">Power input pins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bootloader-pads">Bootloader pads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#companion-computers">Companion Computers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#raspberry-pi">Raspberry Pi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#serial-connection">Serial connection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#others">Others</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#holybro-m8n-gps">HolyBro M8N GPS</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../radioSystems/dragon_link.html" title="previous chapter">DragonLink</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Hs293Go.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/docs/pinouts/pinouts.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

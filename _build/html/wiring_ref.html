@@ -1,0 +1,142 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Mount and Orient Autopilot &#8212; AERO-McGill  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="mount-and-orient-autopilot">
+<h1>Mount and Orient Autopilot<a class="headerlink" href="#mount-and-orient-autopilot" title="Permalink to this headline">¶</a></h1>
+<p>Position the autopilot as close to the vehicle’s center of gravity as possible. Ideally, the autopilot should be mounted in the standard orientation, indicated by the heading mark arrow visible on top and pointing towards the front of the vehicle.</p>
+<p>To mount the pixhawk in a non-standard orientation, configure the pixhawk firmware to recognize the new orientation. This adjusts sensors readings to realign with the vehicle.</p>
+<p>The pixhawk should be mounted on vibration absorbing material, which isolates the sensitive sensors in the Pixhawk from vibrations. Soft foam such as 3M Pixhawk Damping Foams, gel pads, and mounting tables with rubber damping balls are effective.</p>
+</div>
+<div class="section" id="powering-the-autopilot">
+<h1>Powering the autopilot<a class="headerlink" href="#powering-the-autopilot" title="Permalink to this headline">¶</a></h1>
+<p>Connect the output port of a power module to the power port of the Pixhawk with a 6-wire cable.</p>
+<p>A power module supplies stable and filtered power at 5.4V for the pixhawk, measures battery voltage and/or current drawn from the battery.</p>
+<p>The power module can supply power to the autopilot, radio receiver, and some low-power devices, but not servos and other devices connected to the output rail.</p>
+<p>If servos are used, the pixhawk servo rail should be connected to voltage regulator (alias BEC, battery eliminator circuit) that provides power at 5V to drive the servos. Connect the BEC output to a power pin (+) and ground pin (-) on the rail.</p>
+</div>
+<div class="section" id="radio-control">
+<h1>Radio Control<a class="headerlink" href="#radio-control" title="Permalink to this headline">¶</a></h1>
+<p><strong>Warning: Connecting a radio control system to the pixhawk is highly recommended. This ensures that the operator can safety regain control if an auto flight mode malfunctions</strong></p>
+<p>Connect the output of a radio receiver to the receiver port of the pixhawk using a servo cable.</p>
+<p>Pixhawk can read CPPM and SBUS directly. The instructions below are specifically for Spektrum and PWM receivers</p>
+<ul class="simple">
+<li>Connect Spektrum satellite receivers to the SPKT/DSM port on Pixhawk 1 or 2.1</li>
+<li>Connect PWM receivers with an individual wire for each channel to a PPM encoder first, which converts the signal into CPPM for the Pixhawk</li>
+</ul>
+<p><em>Sending RSSI (received signal strength indication) to the Pixhawk allows monitoring of the radio signal strength and helps prevent outflying radio range by accident</em></p>
+<p>If the radio receiver has an RSSI output port, connect it to the SBUS port of the Pixhawk. Configure the pixhawk firmware to measure RSSI signal in percentage</p>
+</div>
+<div class="section" id="telemetry">
+<h1>Telemetry<a class="headerlink" href="#telemetry" title="Permalink to this headline">¶</a></h1>
+<p>Telemetry is used to monitor vehicle status in flight and send commands to the vehicle, i.e. guide the vehicle to a position on a map, or upload a mission.</p>
+<p>Connect the output of a telemetry radio to the telem 1 port of the pixhawk using a 6-wire cable.</p>
+<p>When using a high power radio modem, such as the RFD900 modem, only connect the 4 signal wires to the Pixhawk. Connect the power and ground wires to a separate BEC.</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">AERO-McGill</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">AERO McGill</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vehicle_eval.html">Vehicle Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc_airframe.html">Multicopter Airframes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pinouts.html">Autopilots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pinouts.html#mrobotics-x2-1">mRobotics X2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pinouts.html#radios-and-transceivers">Radios and Transceivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pinouts.html#companion-computers">Companion Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pinouts.html#others">Others</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Hs293Go.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/wiring_ref.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

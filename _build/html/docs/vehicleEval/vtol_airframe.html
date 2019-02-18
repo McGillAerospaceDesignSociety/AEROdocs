@@ -1,0 +1,174 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>VTOL airframe &#8212; AERO-McGill  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DragonLink" href="../radioSystems/dragon_link.html" />
+    <link rel="prev" title="Multicopter Airframes" href="mc_airframe.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="vtol-airframe">
+<h1>VTOL airframe<a class="headerlink" href="#vtol-airframe" title="Permalink to this headline">¶</a></h1>
+<p>VTOL aircraft usually combine a multicopter configuration
+with wings to achieve Vertical-Takeoff-Or-Landing while retaining the
+efficiency of fixed-wings.</p>
+<div class="section" id="tailsitter">
+<h2>Tailsitter<a class="headerlink" href="#tailsitter" title="Permalink to this headline">¶</a></h2>
+<p>The tailsitter mounts two tractor motors on a flying
+wing. In fixed-wing mode, they fly like a simple twin-engine plane. In
+multicopter mode, the flying wing is oriented vertically, such that the
+motors thrust up for lift, and the wing ailerons redirect slipstream air
+for lateral control.</p>
+<p>&lt;img src=”/Graphics/VTOLDuoRotorTailSitter.svg” width=”100”&gt;</p>
+<ul class="simple">
+<li>Mechanically simplest way to achieve Vertical-Takeoff-Or-Landing.</li>
+<li>Primary drawback is unwieldiness: They take off nose vertically up
+but flies level, making payload mounting very complicated</li>
+</ul>
+</div>
+<div class="section" id="tiltrotor">
+<h2>Tiltrotor<a class="headerlink" href="#tiltrotor" title="Permalink to this headline">¶</a></h2>
+<p>The tiltrotor mounts two motors that can tilt up, plus
+one tail motor to provide stabilization during the motor-tilting
+process. Short wings provide lift during forward-flight.</p>
+<p>&lt;img src=”/Graphics/VTOLTiltRotor.svg” width=”100”&gt;</p>
+<ul class="simple">
+<li>Efficient and versatile VTOL configuration that combines many
+valuable features of multicopters and planes</li>
+<li>Primary drawback is unreliability: The tiltrotor mechanism is
+complex, and the VTOL transition, during which the motor tilts, is
+hard to control</li>
+</ul>
+</div>
+<div class="section" id="quadplane">
+<h2>Quadplane<a class="headerlink" href="#quadplane" title="Permalink to this headline">¶</a></h2>
+<p>The quadplane mounts four motors in a Quadcopter X
+configurations to a fixed wing plane, which also has a motor for
+propulsion</p>
+<p>&lt;img src=”/Graphics/VTOLPlane.svg” width=”100”&gt;</p>
+<ul class="simple">
+<li>Most reliable VTOL configuration that uses no moving actuators or
+changing vehicle orientation in flight.</li>
+<li>Primary drawback is inefficiency: quadcopter motors are useless in
+fixed-wing mode, and plane motor is useless in multicopter mode</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">AERO-McGill</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">vehicle_eval</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vehicle_eval.html">Vehicle Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc_airframe.html">Multicopter Airframes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">VTOL airframe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tailsitter">Tailsitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tiltrotor">Tiltrotor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quadplane">Quadplane</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Radio Systems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../radioSystems/dragon_link.html">DragonLink</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Pinout</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html">Autopilots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#radios-and-transceivers">Radios and Transceivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#companion-computers">Companion Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#others">Others</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="mc_airframe.html" title="previous chapter">Multicopter Airframes</a></li>
+      <li>Next: <a href="../radioSystems/dragon_link.html" title="next chapter">DragonLink</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Hs293Go.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/docs/vehicleEval/vtol_airframe.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
