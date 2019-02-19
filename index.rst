@@ -6,6 +6,13 @@
 Welcome to AERO-McGill's documentation!
 =======================================
 
+
+.. toctree::
+   :caption: Radio Systems
+   :hidden:
+
+   docs/radioSystems/dragon_link
+
 .. toctree::
    :caption: vehicle_eval
    :hidden:
@@ -13,12 +20,6 @@ Welcome to AERO-McGill's documentation!
    docs/vehicleEval/vehicle_eval
    docs/vehicleEval/mc_airframe
    docs/vehicleEval/vtol_airframe
-
-.. toctree::
-   :caption: Radio Systems
-   :hidden:
-
-   docs/radioSystems/dragon_link
 
 .. toctree::
    :caption: Pinout
