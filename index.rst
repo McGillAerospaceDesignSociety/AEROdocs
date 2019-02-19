@@ -8,16 +8,19 @@ Welcome to AERO-McGill's documentation!
 
 
 .. toctree::
-   :caption: Radio Systems
+   :caption: vehicle_eval
 
-   docs/radioSystems/dragon_link
    docs/vehicleEval/vehicle_eval
    docs/vehicleEval/mc_airframe
    docs/vehicleEval/vtol_airframe
 
 .. toctree::
+   :caption: Radio Systems
+
+   docs/radioSystems/dragon_link
+
+.. toctree::
    :caption: Pinout
-   :hidden:
 
    docs/pinouts/pinouts
 
