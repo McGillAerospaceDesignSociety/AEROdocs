@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Telemetry Configuration &mdash; AERO-McGill  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">vehicle_eval</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/vehicle_eval.html">Vehicle Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/mc_airframe.html">Multicopter Airframes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/vtol_airframe.html">VTOL airframe</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Radio Systems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dragon_link.html">DragonLink</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Pinout</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html">Autopilots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#radios-and-transceivers">Radios and Transceivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#companion-computers">Companion Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#others">Others</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AERO-McGill</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Telemetry Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/radioSystems/dragon_link_telem.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="telemetry-configuration">
+<h1>Telemetry Configuration<a class="headerlink" href="#telemetry-configuration" title="Permalink to this headline">¶</a></h1>
+<p>To enable MAVLink telemetry communication, both DragonLink Hardware and Software must be setup</p>
+<div class="section" id="hardware-interfaces">
+<h2>Hardware Interfaces<a class="headerlink" href="#hardware-interfaces" title="Permalink to this headline">¶</a></h2>
+<p>Connect the Pixhawk Telem1 or Telem2 port to the DragonLink receiver’s UEXP port as shown in diagrams below.</p>
+<a class="reference internal image-reference" href="../../_images/6pos_GH.png"><img alt="For Advanced Receivers Only" src="../../_images/6pos_GH.png" style="width: 312.5px; height: 200.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/5pos_GH.png"><img alt="For other Receivers" src="../../_images/5pos_GH.png" style="width: 300.0px; height: 200.0px;" /></a>
+<p>When using the Advanced Receiver with Flow Control, stock Pixhawk telemetry cables can be used. Otherwise, a custom cable must be created with the Flow Control wires removed. In all cases, remove the power wire to prevent power supplies fighting each other.</p>
+</div>
+<div class="section" id="receiver-configuration">
+<h2>Receiver Configuration<a class="headerlink" href="#receiver-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Adjust settings in the GUI configurator as described below, and always save settings after each change</p>
+<p><strong>Radio Modem</strong>: Set <em>Input/output buad rate</em> to 38400 (57600 when using Flow Control) and click <em>Save Baud</em></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Turn on Mavlink Decoding to enable flight data display on RC transmitter screen. Otherwise keep disabled</p>
+</div>
+<p><strong>Receiver Outputs</strong>: Set the outputs for the 5-pin UEXP port as follows</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Setting</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>UEXP con pin 3</td>
+<td>Serial In</td>
+</tr>
+<tr class="row-odd"><td>UEXP con pin 4</td>
+<td>Serial Out</td>
+</tr>
+</tbody>
+</table>
+<p>When using Flow Control, set the outputs for the 6-pin UEXP port as follows</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Setting</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>UEXP con pin 2</td>
+<td>Serial In</td>
+</tr>
+<tr class="row-odd"><td>UEXP con pin 3</td>
+<td>Serial Out</td>
+</tr>
+<tr class="row-even"><td>UEXP con pin 4</td>
+<td>CTS</td>
+</tr>
+<tr class="row-odd"><td>UEXP con pin 5</td>
+<td>RTS</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="transmitter-configuration">
+<h2>Transmitter Configuration<a class="headerlink" href="#transmitter-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Adjust settings in the GUI configurator as described below, and always save settings after each change
+<strong>RF Settings</strong>: Select 9X mode</p>
+<p><strong>External Connections</strong>
+- Set baudrate to 57600
+- Select <strong>Radio Modem</strong> for Bluetooth or USB depending on preferred connection method to Mission Planner.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Once the USB function is set to Radio Modem, the transmitter will not connect to the GUI configurator until the GUI config USB function is re-enabled again using the Menu button on the transmitter</p>
+</div>
+<ul class="simple">
+<li>Save settings and re-bind transmitter to receiver</li>
+</ul>
+</div>
+<div class="section" id="set-ardupilot-parameters">
+<h2>Set ArduPilot Parameters<a class="headerlink" href="#set-ardupilot-parameters" title="Permalink to this headline">¶</a></h2>
+<p><strong>Serial Port</strong>: SERIAL1, SR1 and SER1 specifies that the Telem1 hardware port is being configured. If Telem2 is used, change SERIAL2 and so on.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="15%" />
+<col width="48%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Parameter</td>
+<td>Value</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>SERIAL1_PROTOCOL</td>
+<td>1/2</td>
+<td>Mavlink 1 or 2</td>
+</tr>
+<tr class="row-odd"><td>SERIAL1_BAUD</td>
+<td>38</td>
+<td>38400 Bauds</td>
+</tr>
+<tr class="row-even"><td>BRD_SER1_RTSCTS</td>
+<td>0</td>
+<td>Disable Flow Control</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set <strong>SERIAL1_BAUD</strong> to 57 and <strong>BRD_SER1_RTSCTS</strong> to 1 when using Flow Control</p>
+</div>
+<p><strong>Data streaming Rate</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="72%" />
+<col width="28%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Parameter</td>
+<td>Value</td>
+</tr>
+<tr class="row-even"><td>SR1_EXT_STAT</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>SR1_EXTRA1</td>
+<td>5</td>
+</tr>
+<tr class="row-even"><td>SR1_EXTRA2</td>
+<td>5</td>
+</tr>
+<tr class="row-odd"><td>SR1_EXTRA3</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>SR1_PARAMS</td>
+<td>10</td>
+</tr>
+<tr class="row-odd"><td>SR1_POSITION</td>
+<td>3</td>
+</tr>
+<tr class="row-even"><td>SR1_RAW_CTRL</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>SR1_RAW_SENS</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>SR1_RC_CHAN</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hs293Go
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
