@@ -11,10 +11,6 @@ Welcome to AERO-McGill's documentation!
    :caption: Radio Systems
 
    docs/radioSystems/dragon_link
-
-.. toctree::
-   :caption: vehicle_eval
-
    docs/vehicleEval/vehicle_eval
    docs/vehicleEval/mc_airframe
    docs/vehicleEval/vtol_airframe
