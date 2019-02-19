@@ -9,13 +9,11 @@ Welcome to AERO-McGill's documentation!
 
 .. toctree::
    :caption: Radio Systems
-   :hidden:
 
    docs/radioSystems/dragon_link
 
 .. toctree::
    :caption: vehicle_eval
-   :hidden:
 
    docs/vehicleEval/vehicle_eval
    docs/vehicleEval/mc_airframe
