@@ -1,0 +1,531 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Ardupilot Development Quickstart &mdash; AERO-McGill  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Autopilots" href="../pinouts/pinouts.html" />
+    <link rel="prev" title="TBS Crossfire" href="../radioSystems/TBS_Crossfire.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Vehicles and Airframes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/vehicle_eval.html">Vehicle Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/mc_airframe.html">Multicopter Airframes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/vtol_airframe.html">VTOL airframe</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Radio Systems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../radioSystems/dragon_link.html">DragonLink</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../radioSystems/TBS_Crossfire.html">TBS Crossfire</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ardupilot Development Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#setup-build-environment">Setup Build Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-cygwin">Install Cygwin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-setup-in-cygwin">Additional setup in Cygwin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-the-gcc-compiler">Install the GCC compiler</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#setup-git-and-clone-source-code">Setup Git and clone source code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-git-client">Install Git Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cloning-source-code">Cloning source code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#building-the-code">Building the Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-for-hardware">Configure for hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commonly-used-boards">Commonly used boards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-and-upload">Build and upload</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#setup-sitl-simulator">Setup SITL simulator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-mavproxy">Install MAVProxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-paths-in-cygwin">Configure paths in Cygwin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-additional-python-packages">Install additional Python packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-ardupilot-sitl">Build Ardupilot SITL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-flightgear-simulator">Install FlightGear simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-sitl">Running SITL</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Pinout</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html">Autopilots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#radios-and-transceivers">Radios and Transceivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#companion-computers">Companion Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#others">Others</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AERO-McGill</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Ardupilot Development Quickstart</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/APMDevel/APM_devel.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ardupilot-development-quickstart">
+<h1>Ardupilot Development Quickstart<a class="headerlink" href="#ardupilot-development-quickstart" title="Permalink to this headline">¶</a></h1>
+<p>This document provides an alternate set of instructions to setup a build
+environment for the ArduPilot flight control system. In contrast to the
+<a class="reference external" href="http://ardupilot.org/dev/index.html">Ardupilot’s official documentation</a>, this document is condensed with
+some low level information removed.</p>
+<p>Setting up a build environment for Ardupilot consists of four primary
+elements:</p>
+<ol class="arabic simple">
+<li>Setup Build Environment on Windows using Cygwin</li>
+<li>Setup Git and obtain (<em>clone</em>) Arducopter source code</li>
+<li>Build with waf and upload to autopilot hardware</li>
+<li>Set up SITL simulation to test fly vehicles</li>
+<li>Set up Eclipse IDE to streamline development (WIP)</li>
+</ol>
+</div>
+<div class="section" id="setup-build-environment">
+<h1>Setup Build Environment<a class="headerlink" href="#setup-build-environment" title="Permalink to this headline">¶</a></h1>
+<p>For official documentation for this step <a class="reference external" href="http://ardupilot.org/dev/docs/building-setup-windows-cygwin.html">click here</a></p>
+<div class="section" id="install-cygwin">
+<h2>Install Cygwin<a class="headerlink" href="#install-cygwin" title="Permalink to this headline">¶</a></h2>
+<p>Cygwin is an environment to allow programs in Linux or Unix-like systems
+to be compiled and ran natively on Windows. Installation steps are as
+follows.</p>
+<ol class="arabic">
+<li><p class="first">Go to the <a class="reference external" href="www.cygwin.com/install.html">Cygwin Install Page</a> and download the installer
+<code class="docutils literal notranslate"><span class="pre">setup-x86_64.exe</span></code></p>
+</li>
+<li><p class="first">Open a command prompt and change directory to download location of
+<code class="docutils literal notranslate"><span class="pre">setup-x86_64.exe</span></code>, then run the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setup</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">P</span> <span class="n">autoconf</span><span class="p">,</span><span class="n">automake</span><span class="p">,</span><span class="n">ccache</span><span class="p">,</span><span class="n">gcc</span><span class="o">-</span><span class="n">g</span><span class="o">++</span><span class="p">,</span><span class="n">git</span><span class="p">,</span><span class="n">libtool</span><span class="p">,</span><span class="n">make</span><span class="p">,</span><span class="n">gawk</span><span class="p">,</span><span class="n">libexpat</span><span class="o">-</span><span class="n">devel</span><span class="p">,</span><span class="n">libxml2</span><span class="o">-</span><span class="n">devel</span><span class="p">,</span><span class="n">libxslt</span><span class="o">-</span><span class="n">devel</span><span class="p">,</span><span class="n">python2</span><span class="o">-</span><span class="n">devel</span><span class="p">,</span><span class="n">python2</span><span class="o">-</span><span class="n">future</span><span class="p">,</span><span class="n">python2</span><span class="o">-</span><span class="n">libxml2</span><span class="p">,</span><span class="n">python2</span><span class="o">-</span><span class="n">pip</span><span class="p">,</span><span class="n">procps</span><span class="o">-</span><span class="n">ng</span><span class="p">,</span><span class="n">gdb</span><span class="p">,</span><span class="n">ddd</span><span class="p">,</span><span class="nb">zip</span>
+</pre></div>
+</div>
+<p>This command specifies the entire list of packages to be installed,
+bypassing the need to individually lookup each package in the <em>Select
+Packages</em> dialog.</p>
+</li>
+<li><p class="first">Accept the all the prompts and default file locations. Click <strong>Next</strong>
+at the <em>Select Packages</em> dialog, then accept all remaining prompts
+and default options (including the additional dependencies)</p>
+</li>
+<li><p class="first">Select Finish to start downloading and installing the packages[1]</p>
+</li>
+</ol>
+<!-- end list --></div>
+<div class="section" id="additional-setup-in-cygwin">
+<h2>Additional setup in Cygwin<a class="headerlink" href="#additional-setup-in-cygwin" title="Permalink to this headline">¶</a></h2>
+<p>Two final setup steps are done from the <strong>Cygwin Terminal</strong>. This is a
+terminal application like Windows Command Prompt but admits Linux
+commands like <code class="docutils literal notranslate"><span class="pre">ls</span></code> or <code class="docutils literal notranslate"><span class="pre">grep</span></code></p>
+<ol class="arabic">
+<li><p class="first">Open <strong>Cygwin64 Terminal</strong> then quit it to create initialisation
+files for the user in the Cygwin home directory.</p>
+</li>
+<li><p class="first">Open a new instance of <strong>Cygwin64 Terminal</strong>, run the following
+commands to install additional Python packages</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip2</span> <span class="n">install</span> <span class="n">empy</span>
+<span class="n">pip2</span> <span class="n">install</span> <span class="n">pyserial</span>
+<span class="n">pip2</span> <span class="n">install</span> <span class="n">pymavlink</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="install-the-gcc-compiler">
+<h2>Install the GCC compiler<a class="headerlink" href="#install-the-gcc-compiler" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Download the GCC Compiler’s installer from the <a class="reference external" href="firmware.ardupilot.org/Tools/STM32-tools">Tools page</a> in
+Ardupilot firmware and run the installer</li>
+<li>Accept the license and default install location</li>
+<li>Accept the ssl certificate</li>
+<li>Before finishing the installation, check the option to <strong>Add path to
+environment variable</strong></li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If step 4 is omitted, the path must be manually added to environment variables. This is not straightforward. Otherwise, the compiler will be unusable.</p>
+</div>
+</div>
+</div>
+<div class="section" id="setup-git-and-clone-source-code">
+<h1>Setup Git and clone source code<a class="headerlink" href="#setup-git-and-clone-source-code" title="Permalink to this headline">¶</a></h1>
+<p>The ArduPilot project uses <strong>git</strong> for source code management and
+<strong>GitHub</strong> for source code hosting. To download and build the source
+code, the developer must:</p>
+<ol class="arabic simple">
+<li>Install a git client on your local computer. There are two options:</li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>Command line in the Cygwin terminal</li>
+<li>GUI client</li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Download a copy of the source code to your local computer</li>
+</ol>
+<div class="section" id="install-git-client">
+<h2>Install Git Client<a class="headerlink" href="#install-git-client" title="Permalink to this headline">¶</a></h2>
+<p>Option 1a, command line in the Cygwin terminal, will be available as long as the Cygwin installation is done correctly</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><em>git</em> is one of the many packages selected during installation</p>
+</div>
+<p>Option 1b, GUI client, requires separate installation of the client software, such as [GitHub Desktop](<a class="reference external" href="https://desktop.github.com/">https://desktop.github.com/</a>). GUI clients will not be discussed below, but their usage should be fairly intuitive.</p>
+</div>
+<div class="section" id="cloning-source-code">
+<h2>Cloning source code<a class="headerlink" href="#cloning-source-code" title="Permalink to this headline">¶</a></h2>
+<p>Ardupilot source code is hosted on Github</p>
+<p>Clone refers to creating and downloading a local copy of the source code. This copy must be downloaded into the Cygwin file structure. The steps are as follows</p>
+<ol class="arabic simple">
+<li>Open a new <strong>Cygwin64 Terminal</strong></li>
+<li>Change directory to C:/cygwin64/home/user/, where user may be any account or username</li>
+<li>Run the command <cite>git clone https://github.com/ArduPilot/ardupilot.git</cite></li>
+<li>Change directory to the newly created C:/cygwin64/home/user/ardupilot</li>
+<li>Run the command <cite>git submodule update –init –recursive</cite></li>
+</ol>
+<p>Submodules hold external code repositories that Ardupilot is dependent on, such as <strong>ChibiOS</strong>, the RTOS that Ardupilot uses, and <strong>Waf</strong>, the build system.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Forgetting to update submodules is a common source of build failure.</p>
+</div>
+<p>When all 5 steps are done, the source code may now be built with waf.</p>
+</div>
+</div>
+<div class="section" id="building-the-code">
+<h1>Building the Code<a class="headerlink" href="#building-the-code" title="Permalink to this headline">¶</a></h1>
+<p>For official documentation click <a class="reference external" href="https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md">here3</a></p>
+<p>Ardupilot uses the <a class="reference external" href="https://waf.io/">Waf</a> build system. Waf is python based and has no dependency on additional software or libraries. It also does not rely on a code generator such as Makefiles. Waf is extensively documented in <a class="reference external" href="https://waf.io/book/">The Waf Book</a></p>
+<div class="section" id="preliminaries">
+<h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
+<p>When building Ardupilot, Waf must be called from the root directory of the source code. Following previous documentation, this directory will be
+<code class="docutils literal notranslate"><span class="pre">C:\cygwin64\home\users\ardupilot</span></code></p>
+<p>Open a Cygwin64 terminal and enter this directory to proceed to the next steps.</p>
+</div>
+<div class="section" id="configure-for-hardware">
+<h2>Configure for hardware<a class="headerlink" href="#configure-for-hardware" title="Permalink to this headline">¶</a></h2>
+<p>When building Ardupilot, a configure step is necessary to select the autopilot board. Run the following command when building for Pixracer,
+for example.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">waf</span> <span class="n">configure</span> <span class="o">--</span><span class="n">board</span> <span class="n">Pixracer</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="commonly-used-boards">
+<h2>Commonly used boards<a class="headerlink" href="#commonly-used-boards" title="Permalink to this headline">¶</a></h2>
+<p>To list all supported autopilots, run the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">waf</span> <span class="n">list_boards</span>
+</pre></div>
+</div>
+<p>Following are some commonly used boards and their corresponding entry to the configure command.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">sitl</span></code>: SITL simulator</li>
+<li><code class="docutils literal notranslate"><span class="pre">Pixhawk1</span></code>: <a class="reference external" href="https://store.mrobotics.io/Genuine-PixHawk-Flight-Controller-p/mro-pixhawk1-minkit-mr.htm">Original Pixhawk with 2Mb flash</a></li>
+<li><code class="docutils literal notranslate"><span class="pre">CubeBlack</span></code>: <a class="reference external" href="http://www.proficnc.com/content/13-pixhawk2">Pixhawk 2.1 Cube</a></li>
+<li><code class="docutils literal notranslate"><span class="pre">mRoX21</span></code>: <a class="reference external" href="https://store.mrobotics.io/mRo-X2-1-Rev-2-p/mro-x2.1rv2-mr.htm">AUAV/mRobotics X2.1</a></li>
+<li><code class="docutils literal notranslate"><span class="pre">Pixracer</span></code>: <a class="reference external" href="https://store.mrobotics.io/mRo-PixRacer-R15-Official-p/auav-pxrcr-r15-mr.htm">mRobotics Pixracer</a></li>
+<li><code class="docutils literal notranslate"><span class="pre">Pixhawk4</span></code>: <a class="reference external" href="https://shop.holybro.com/pixhawk-4_p1089.html">Holybro Pixhawk 4</a></li>
+<li><code class="docutils literal notranslate"><span class="pre">omnibusf4pro</span></code>: OmnibusF4 v5 and lower (through holes)</li>
+<li><code class="docutils literal notranslate"><span class="pre">omnibusf4v4</span></code>: OmnibusF4 V6 (solder pads)</li>
+<li><code class="docutils literal notranslate"><span class="pre">OmnibusNanoV6</span></code>: Omnibus Nano (20mm mounting pattern)</li>
+<li><code class="docutils literal notranslate"><span class="pre">revo-mini</span></code>: OpenPilot Revolution Mini</li>
+<li><code class="docutils literal notranslate"><span class="pre">KakuteF4</span></code>: HolyBro Kakute F4</li>
+<li><code class="docutils literal notranslate"><span class="pre">KakuteF7</span></code>: HolyBro Kakute F7</li>
+</ul>
+</div>
+<div class="section" id="build-and-upload">
+<h2>Build and upload<a class="headerlink" href="#build-and-upload" title="Permalink to this headline">¶</a></h2>
+<p>Run the following command to build ArduCopter</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">waf</span> <span class="n">copter</span>
+</pre></div>
+</div>
+<p>Similarly, <code class="docutils literal notranslate"><span class="pre">./waf</span> <span class="pre">plane</span></code> builds ArduPlane and <code class="docutils literal notranslate"><span class="pre">./waf</span> <span class="pre">rover</span></code> builds ArduRover.</p>
+<p>Build commands have a <code class="docutils literal notranslate"><span class="pre">--upload</span></code> option for uploading the binary to an autopilot. Run the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">waf</span> <span class="n">copter</span> <span class="o">--</span><span class="n">upload</span>
+</pre></div>
+</div>
+<p>Linux-based boards require additional steps before building. These steps will not be discussed here.</p>
+</div>
+</div>
+<div class="section" id="setup-sitl-simulator">
+<h1>Setup SITL simulator<a class="headerlink" href="#setup-sitl-simulator" title="Permalink to this headline">¶</a></h1>
+<p>For official documentation click <a class="reference external" href="http://ardupilot.org/dev/docs/sitl-native-on-windows.html">here2</a></p>
+<p>SITL (Software-in-the-loop) simulation allows Ardupilot flight code to control a computer modeled vehicle in a simulated world. The pilot can
+interact with this vehicle as if it is a real vehicle, using Mission Planner, MAVProxy, or a radio controller/gamepad.</p>
+<div class="section" id="install-mavproxy">
+<h2>Install MAVProxy<a class="headerlink" href="#install-mavproxy" title="Permalink to this headline">¶</a></h2>
+<p>MAVProxy is a minimal Ground Control utility that uses a command line interface to interact with a vehicle. It is commonly used for testing
+and developing ArduPilot.</p>
+<p>The installer for MAVProxy can be downloaded
+<a class="reference external" href="http://firmware.ardupilot.org/Tools/MAVProxy/">here</a></p>
+</div>
+<div class="section" id="configure-paths-in-cygwin">
+<h2>Configure paths in Cygwin<a class="headerlink" href="#configure-paths-in-cygwin" title="Permalink to this headline">¶</a></h2>
+<p>The Ardupilot SITL simulator is run with the command <code class="docutils literal notranslate"><span class="pre">sim_vehicle.py</span></code>. This is a python script that is located in a subdirectory within
+ardupilot. To run this script at the root directory, follow the steps below</p>
+<ol class="arabic">
+<li><p class="first">Navigate to <code class="docutils literal notranslate"><span class="pre">\home</span></code> in the Cygwin file system and open <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> (Usually <code class="docutils literal notranslate"><span class="pre">C:\cygwin\home\user\.bashrc.</span></code>)</p>
+</li>
+<li><p class="first">Add the following line to the end of <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>. This adds the path to the <code class="docutils literal notranslate"><span class="pre">sim_vehicle.py</span></code> to Cygwin.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export PATH=$PATH:$HOME/ardupilot/Tools/autotest
+</pre></div>
+</div>
+</li>
+<li><p class="first">Exit and restart the instance of Cygwin64 terminal to make the change effective</p>
+</li>
+</ol>
+</div>
+<div class="section" id="install-additional-python-packages">
+<h2>Install additional Python packages<a class="headerlink" href="#install-additional-python-packages" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ensurepip</span> <span class="o">--</span><span class="n">user</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">future</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">lxml</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">uavcan</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-ardupilot-sitl">
+<h2>Build Ardupilot SITL<a class="headerlink" href="#build-ardupilot-sitl" title="Permalink to this headline">¶</a></h2>
+<p>Build the ardupilot firmware as previously mentioned with configuration to <code class="docutils literal notranslate"><span class="pre">sitl</span></code>. Use the following commands.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">waf</span> <span class="n">configure</span> <span class="o">--</span><span class="n">board</span> <span class="n">sitl</span>
+<span class="o">./</span><span class="n">waf</span> <span class="n">copter</span>
+</pre></div>
+</div>
+<p>Where copter may be a different product group for which the simulation is run, e.g. <code class="docutils literal notranslate"><span class="pre">plane</span></code></p>
+</div>
+<div class="section" id="install-flightgear-simulator">
+<h2>Install FlightGear simulator<a class="headerlink" href="#install-flightgear-simulator" title="Permalink to this headline">¶</a></h2>
+<p>The FlightGear Flight Simulator provides a 3D simulation of the vehicle and its surroundings to allow for visualization of vehicle attitude and
+its movement through the environment. Go to the <a class="reference external" href="http://www.flightgear.org/download/">FlightGear Install Page</a>, download the installer and run it.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">As FlightGear is installing, it is highly recommended to accept any prompt to install scenery automatically</p>
+</div>
+</div>
+<div class="section" id="running-sitl">
+<h2>Running SITL<a class="headerlink" href="#running-sitl" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Start <strong>Cygwin64 Terminal</strong> and change directory to <code class="docutils literal notranslate"><span class="pre">/ardupilot/ArduCopter</span></code>, or <code class="docutils literal notranslate"><span class="pre">/ardupilot/ArduPlane</span></code>, depending on vehicle to be simulated</p>
+</li>
+<li><p class="first">Call <code class="docutils literal notranslate"><span class="pre">sim_vehicle.py</span></code> using the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sim_vehicle</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="nb">map</span> <span class="o">--</span><span class="n">console</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">SITL and MAVProxy will start. MAVProxy displays three windows:</p>
+</li>
+</ol>
+<ul class="simple">
+<li>MAVProxy command line interface</li>
+<li>Console that displays vehicle status and messages</li>
+<li>2D map that shows vehicle position and can be used (via right-click)
+to control vehicle movement and missions.</li>
+</ul>
+<ol class="arabic" start="4">
+<li><p class="first">Start Mission Planner, which interfaces with the SITL simulator via UDP at port 14550 or 14551. To ascertain the UDP port that SITL is outputting data at, use the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GUIDED</span><span class="o">&gt;</span> <span class="n">output</span>
+<span class="n">GUIDED</span><span class="o">&gt;</span> <span class="mi">2</span> <span class="n">outputs</span>
+<span class="mi">0</span><span class="p">:</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">14550</span>
+<span class="mi">1</span><span class="p">:</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">14551</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>5. In Mission Planner, use the UDP option with the correct port specified to connect to the vehicle. Once connected, interact with the vehicle as
+if it is an actual UAV connected over radio telemetry.</p>
+<ol class="arabic simple" start="6">
+<li>To enable control via radio controller, plug in a radio controller that can function like a joystick, e.g. Taranis X9D, and make appropriate configurations in Mission Planner.</li>
+</ol>
+<p>Low level vehicle command and control via MAVProxy directly is out of scope of this document. Consult <a class="reference external" href="http://ardupilot.org/dev/docs/copter-sitl-mavproxy-tutorial.html">here</a> for details.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../pinouts/pinouts.html" class="btn btn-neutral float-right" title="Autopilots" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../radioSystems/TBS_Crossfire.html" class="btn btn-neutral float-left" title="TBS Crossfire" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hs293Go
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

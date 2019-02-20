@@ -82,7 +82,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">vehicle_eval</span></p>
+              <p class="caption"><span class="caption-text">Vehicles and Airframes</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docs/vehicleEval/vehicle_eval.html">Vehicle Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/vehicleEval/mc_airframe.html">Multicopter Airframes</a></li>
@@ -91,6 +91,15 @@
 <p class="caption"><span class="caption-text">Radio Systems</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docs/radioSystems/dragon_link.html">DragonLink</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/radioSystems/TBS_Crossfire.html">TBS Crossfire</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/APMDevel/APM_devel.html">Ardupilot Development Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/APMDevel/APM_devel.html#setup-build-environment">Setup Build Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/APMDevel/APM_devel.html#setup-git-and-clone-source-code">Setup Git and clone source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/APMDevel/APM_devel.html#building-the-code">Building the Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/APMDevel/APM_devel.html#setup-sitl-simulator">Setup SITL simulator</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Pinout</span></p>
 <ul>
@@ -165,10 +174,135 @@
   <div class="section" id="welcome-to-aero-mcgill-s-documentation">
 <h1>Welcome to AERO-McGill’s documentation!<a class="headerlink" href="#welcome-to-aero-mcgill-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Vehicles and Airframes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/vehicleEval/vehicle_eval.html">Vehicle Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/vehicleEval/mc_airframe.html">Multicopter Airframes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/vehicleEval/mc_airframe.html#single-coaxcopter">Single/Coaxcopter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/vehicleEval/mc_airframe.html#tricopter">Tricopter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/vehicleEval/mc_airframe.html#quadcopter">Quadcopter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/vehicleEval/mc_airframe.html#quadcopter-x">Quadcopter X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/vehicleEval/mc_airframe.html#quadcopter-wide">Quadcopter Wide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/vehicleEval/mc_airframe.html#quadcopter-h">Quadcopter H</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/vehicleEval/vtol_airframe.html">VTOL airframe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/vehicleEval/vtol_airframe.html#tailsitter">Tailsitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/vehicleEval/vtol_airframe.html#tiltrotor">Tiltrotor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/vehicleEval/vtol_airframe.html#quadplane">Quadplane</a></li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Radio Systems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/radioSystems/dragon_link.html">DragonLink</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/radioSystems/dragon_link.html#basic-setup">Basic Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#connect-dragonlink-transmitter-to-radio">Connect DragonLink Transmitter to radio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#binding">Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#using-multiple-dragonlink-transmitters-in-proxity">Using multiple DragonLink Transmitters in proxity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#received-signal-strength-indication-rssi">Received Signal Strength Indication (RSSI)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docs/radioSystems/dragon_link.html#telemetry-setup">Telemetry Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#connect-dragonlink-receiver-to-autopilot">Connect DragonLink receiver to Autopilot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#receiver-configuration">Receiver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#transmitter-configuration">Transmitter Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#set-ardupilot-parameters">Set ArduPilot Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docs/radioSystems/dragon_link.html#extra-options-via-menu-button">Extra Options via Menu Button</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#range-test-mode">Range Test Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#bind-mode">Bind Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#servo-test-mode">Servo Test Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#change-transmitter-id">Change Transmitter ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#exit-usb-telemetry-mode">Exit USB Telemetry Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docs/radioSystems/dragon_link.html#hardware">Hardware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#v3-advanced-transmitter-slim">V3 Advanced Transmitter (Slim)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#micro-receiver">Micro Receiver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/radioSystems/dragon_link.html#advanced-receiver">Advanced Receiver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/radioSystems/TBS_Crossfire.html">TBS Crossfire</a></li>
+</ul>
 </div>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/APMDevel/APM_devel.html">Ardupilot Development Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/APMDevel/APM_devel.html#setup-build-environment">Setup Build Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#install-cygwin">Install Cygwin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#additional-setup-in-cygwin">Additional setup in Cygwin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#install-the-gcc-compiler">Install the GCC compiler</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/APMDevel/APM_devel.html#setup-git-and-clone-source-code">Setup Git and clone source code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#install-git-client">Install Git Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#cloning-source-code">Cloning source code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/APMDevel/APM_devel.html#building-the-code">Building the Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#configure-for-hardware">Configure for hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#commonly-used-boards">Commonly used boards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#build-and-upload">Build and upload</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/APMDevel/APM_devel.html#setup-sitl-simulator">Setup SITL simulator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#install-mavproxy">Install MAVProxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#configure-paths-in-cygwin">Configure paths in Cygwin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#install-additional-python-packages">Install additional Python packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#build-ardupilot-sitl">Build Ardupilot SITL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#install-flightgear-simulator">Install FlightGear simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/APMDevel/APM_devel.html#running-sitl">Running SITL</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Pinout</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/pinouts/pinouts.html">Autopilots</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/pinouts/pinouts.html#omnibus-f4v5">Omnibus F4V5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/pinouts/pinouts.html#rear-headers">Rear headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/pinouts/pinouts.html#side-headers">Side headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/pinouts/pinouts.html#motor-output-jst-sh-socket">Motor output JST-SH Socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/pinouts/pinouts.html#power-output-pins">Power output pins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docs/pinouts/pinouts.html#mrobotics-x2-1">mRobotics X2.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/pinouts/pinouts.html#front-headers">Front headers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/pinouts/pinouts.html#radios-and-transceivers">Radios and Transceivers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/pinouts/pinouts.html#rfd900x">RFD900X</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/pinouts/pinouts.html#power-input-pins">Power input pins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/pinouts/pinouts.html#bootloader-pads">Bootloader pads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/pinouts/pinouts.html#companion-computers">Companion Computers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/pinouts/pinouts.html#raspberry-pi">Raspberry Pi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/pinouts/pinouts.html#serial-connection">Serial connection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/pinouts/pinouts.html#others">Others</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/pinouts/pinouts.html#holybro-m8n-gps">HolyBro M8N GPS</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 <div class="section" id="indices-and-tables">

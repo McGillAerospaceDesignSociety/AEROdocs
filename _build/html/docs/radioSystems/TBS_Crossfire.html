@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Vehicle Evaluation &mdash; AERO-McGill  documentation</title>
+  <title>TBS Crossfire &mdash; AERO-McGill  documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Multicopter Airframes" href="mc_airframe.html" />
-    <link rel="prev" title="Welcome to AERO-McGill’s documentation!" href="../../index.html" /> 
+    <link rel="next" title="Ardupilot Development Quickstart" href="../APMDevel/APM_devel.html" />
+    <link rel="prev" title="DragonLink" href="dragon_link.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,15 +84,15 @@
             
             
               <p class="caption"><span class="caption-text">Vehicles and Airframes</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Vehicle Evaluation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mc_airframe.html">Multicopter Airframes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vtol_airframe.html">VTOL airframe</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/vehicle_eval.html">Vehicle Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/mc_airframe.html">Multicopter Airframes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vehicleEval/vtol_airframe.html">VTOL airframe</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Radio Systems</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../radioSystems/dragon_link.html">DragonLink</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../radioSystems/TBS_Crossfire.html">TBS Crossfire</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dragon_link.html">DragonLink</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TBS Crossfire</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
@@ -151,13 +151,13 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Vehicle Evaluation</li>
+      <li>TBS Crossfire</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/docs/vehicleEval/vehicle_eval.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/docs/radioSystems/TBS_Crossfire.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,23 +170,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="vehicle-evaluation">
-<h1>Vehicle Evaluation<a class="headerlink" href="#vehicle-evaluation" title="Permalink to this headline">¶</a></h1>
-<p>AERO McGill evaluates different airframes and vehicle configurations
-based on the intended mission and application. In practice, UAVs are
-commonly grouped in three classes</p>
-<blockquote>
-<div><ul class="simple">
-<li>Multicopters: Versatile, manoeuvrable, and capable of precise
-hovering, but limited in endurance or range</li>
-<li>Fixed-Wings: Traditional planes are very efficient, and can
-easily achieve high speed or long distance flight</li>
-<li>VTOLs: Vertical-Takeoff-Or-Landing aircraft combines the benefits
-of fixed-wing planes and multicopters</li>
-</ul>
-</div></blockquote>
-<p>![Airframe Screen](../img/airframes.png) <em>QGroundControl airframe
-selection screen</em></p>
+  <div class="section" id="tbs-crossfire">
+<h1>TBS Crossfire<a class="headerlink" href="#tbs-crossfire" title="Permalink to this headline">¶</a></h1>
+<p>DragonLink is a UHF RC system. Compared to other UHF systems, its primary advantage is its support for the CRSF protocol, which offers a very low latency control link with integral telemetry data downlink.</p>
+<p>TBS Crossfire has support for bidirectional telemetry, including MAVLink telemetry for ArduPilot, but this functionality is limited by the low downlink transmit power on Receivers.</p>
 </div>
 
 
@@ -197,10 +184,10 @@ selection screen</em></p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mc_airframe.html" class="btn btn-neutral float-right" title="Multicopter Airframes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../APMDevel/APM_devel.html" class="btn btn-neutral float-right" title="Ardupilot Development Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../../index.html" class="btn btn-neutral float-left" title="Welcome to AERO-McGill’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dragon_link.html" class="btn btn-neutral float-left" title="DragonLink" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

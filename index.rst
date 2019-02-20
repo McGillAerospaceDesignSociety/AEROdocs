@@ -8,7 +8,7 @@ Welcome to AERO-McGill's documentation!
 
 
 .. toctree::
-   :caption: vehicle_eval
+   :caption: Vehicles and Airframes
 
    docs/vehicleEval/vehicle_eval
    docs/vehicleEval/mc_airframe
@@ -18,6 +18,12 @@ Welcome to AERO-McGill's documentation!
    :caption: Radio Systems
 
    docs/radioSystems/dragon_link
+   docs/radioSystems/TBS_Crossfire
+
+.. toctree::
+   :caption: Development
+
+   docs/APMDevel/APM_devel
 
 .. toctree::
    :caption: Pinout
