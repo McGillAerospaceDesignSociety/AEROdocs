@@ -90,15 +90,11 @@ Install the GCC compiler
 Setup Git and clone source code
 ===============================
 
-The ArduPilot project uses **git** for source code management and
-**GitHub** for source code hosting. To download and build the source
-code, the developer must:
+The ArduPilot project uses **git** for source code management and **GitHub** for source code hosting. To download and build the source code, the developer must:
 
 1.  Install a git client on your local computer. There are two options:
-    
    a. Command line in the Cygwin terminal
    b. GUI client
-
 2.  Download a copy of the source code to your local computer
 
 Install Git Client
@@ -123,7 +119,10 @@ Clone refers to creating and downloading a local copy of the source code. This c
 
 1.  Open a new **Cygwin64 Terminal**
 2.  Change directory to C:/cygwin64/home/user/, where user may be any account or username
-3.  Run the command `git clone https://github.com/ArduPilot/ardupilot.git`
+3.  Run the command 
+
+``git clone https://github.com/ArduPilot/ardupilot.git``
+
 4.  Change directory to the newly created C:/cygwin64/home/user/ardupilot
 5.  Run the command `git submodule update --init --recursive`
 
