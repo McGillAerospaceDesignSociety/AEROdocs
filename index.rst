@@ -24,6 +24,7 @@ Welcome to AERO-McGill's documentation!
    :caption: Development
 
    docs/APMDevel/APM_devel
+   docs/MAVLink/mavlink_dev
 
 .. toctree::
    :caption: Pinout
