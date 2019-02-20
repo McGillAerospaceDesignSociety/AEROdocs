@@ -1,15 +1,14 @@
 DragonLink
 ==========
 
-DragonLink is a UHF RC system. Compared to other UHF systems, its primary advantage is its full support for bidirectional telemetry, including MAVLink telemetry for ArduPilot. 
+DragonLink is a 915MHz UHF RC system. Compared to other UHF systems, its primary advantage is its full support for bidirectional telemetry, including MAVLink telemetry for ArduPilot. 
 
-Download the DragonLink GUI configurator and manual in the following page. There is no need to install the configurator. 
+Configuration for the DragonLink system is primarily done in a very user-friendly GUI configuration. Download the DragonLink GUI configurator and manual in the following page. There is no need to install from an .exe or .msi installer. 
 
-.. _V3 Complete System: 
-   http://www.dragonlinkrc.com/instructions/v3equipment/v3completesystem/
+`V3 Complete System`_
 
 .. Note::
-   Navigation in the GUI is intuitive and will not be explained in detail. All configuration instructions below will be labelled by the associated page/tab in the GUI configurator
+   Navigation in the GUI will not be explained in detail. All configuration instructions below will be labelled by the associated page/tab in the GUI configurator
 
 Basic Setup
 -----------
@@ -42,21 +41,58 @@ Connect Transmitter to the GUI configurator and change settings as described bel
 Binding
 ~~~~~~~
 
-Binding identifies one specific receiver to a transmitter
+Binding identifies one specific receiver to a transmitter. Procedure:
 
-1. Place the DragonLink Transmitter in Bind mode in the GUI configurator (General Settings Page) or using the Menu Button.
-2. Power on the Dragonlink Receiver
-3. Successful binding is indicated by flashing Blue and Green LEDs on the receiver
-4. Power cycle both transmitter and receiver after successful binding
+1. Connect DragonLink Transmitter to the GUI configurator.
+2. **General Settings**: Place the DragonLink Transmitter in Bind mode
+3. Power on the Dragonlink Receiver
+4. Successful binding is indicated by flashing Blue and Green LEDs on the receiver
+5. Power cycle both transmitter and receiver after successful binding
 
-Using multiple DragonLink Transmitters in proxity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. note::
+   It possible to place the DragonLink Transmitter in Bind Mode without connecting to the GUI. See `Extra Options via Menu Button`_ section.
+
+
+Setting transmitter ID
+~~~~~~~~~~~~~~~~~~~~~~
 
 Each DragonLink Transmitter must be set an unique ID such that multiple DragonLink transmitters may be used in promixity. Setting ID is done in the GUI configurator.
 
 **General Settings**: Set *ID* to a unique, non-default value, then rebind the receiver to the transmitter
 
+Configuring Receiver Interfaces
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The signal output pins of the DragonLink Receiver can be configured to serve different purposes. Procedure:
+
+1. Connect Receiver to the GUI configurator and change settings as described below, and always save settings after each change
+2. **Rx Outputs**: Pick a channel and select a function from the dropdown menu
+
++------------------+------------------------------------------------------------------------------------+
+| Option           | Definition                                                                         |
++------------------+------------------------------------------------------------------------------------+
+| PWM1-12          | PWM signal pin for one corresponding channel                                       |
++------------------+------------------------------------------------------------------------------------+
+| RSSI             | RSSI signal pin, encoding signal strength as a PWM signal value                    |
++------------------+------------------------------------------------------------------------------------+
+| SBus             | SBus RC protocol signal pin                                                        |
++------------------+------------------------------------------------------------------------------------+
+| Spectrum         | Spectrum RC protocol signal pin                                                    |
++------------------+------------------------------------------------------------------------------------+
+| PPM              | PPM signal pin carrying all channels in one stream                                 |
++------------------+------------------------------------------------------------------------------------+
+| GPS RX           | Serial Receive pin for GPS module                                                  |
++------------------+------------------------------------------------------------------------------------+
+| Serial in/out    | Serial pins for passing raw serial data and MAVLink telemetry data from autopilots |
++------------------+------------------------------------------------------------------------------------+
+| DragonLink OSD   | Serial pins for passing data to the DragonLink OSD                                 |
++------------------+------------------------------------------------------------------------------------+
+| Vector Open Telm | Signal pin for passing telemetry data from Eagletree Vector autopilots             |
++------------------+------------------------------------------------------------------------------------+
+
+
+Setting Transmit Power
+~~~~~~~~~~~~~~~~~~~~~~
 
 Received Signal Strength Indication (RSSI)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,11 +101,9 @@ RSSI is a useful indicator of the remaining link budget available to the vehicle
 .. Tip::
    Digital RSSI is generally recommended because not all autopilots have analog ports to read analog RSSI.
 
-Connect Receiver to the GUI configurator and change settings as described below, and always save settings after each change
-
-**Receiver Outputs**: Configure channel mixing in the PPM / SBUS stream under *PPM/S-Bus out*. Select any channel other than channel 1-5 to output Digital RSSI. 
-
-**Set ArduPilot Parameters**: Set Parameters as follows
+1. Connect Receiver to the GUI configurator and change settings as described below, and always save settings after each change
+2. **Receiver Outputs**: Configure channel mixing in the PPM / SBUS stream under *PPM/S-Bus out*. Select any channel other than channel 1-5 to output Digital RSSI. 
+3. **Set ArduPilot Parameters**: Set Parameters as follows
 
 +----------------+--------+------------------------------+
 | Parameter      | Value  | Description                  |
@@ -83,7 +117,7 @@ Connect Receiver to the GUI configurator and change settings as described below,
 | RSSI_CHAN_HIGH | 1900   | RSSI PWM high value          |
 +----------------+--------+------------------------------+
 
-**Display RSSI on Mission Planner**: Right-Click on the HUD, click **User Items**, and check the **rxrssi** item in the window that opens up. Alternately, Double-Click on any flight data field on the **Quick** tab under the HUD, and check the **rxrssi** item in the window that opens up.
+4. **Display RSSI on Mission Planner**: Right-Click on the HUD, click **User Items**, and check the **rxrssi** item in the window that opens up. Alternately, Double-Click on any flight data field on the **Quick** tab under the HUD, and check the **rxrssi** item in the window that opens up.
 
 Telemetry Setup
 ---------------
@@ -148,7 +182,7 @@ Adjust settings in the GUI configurator as described below, and always save sett
 - Select **Radio Modem** for Bluetooth or USB depending on preferred connection method to Mission Planner.
 
 .. Warning::
-   Once the USB function is set to Radio Modem, the transmitter will not connect to the GUI configurator until the GUI config USB function is re-enabled again using the Menu button on the transmitter
+   Once the USB function is set to Radio Modem, the transmitter will not connect to the GUI configurator until the GUI config USB function is re-enabled again by selecting one of the `Extra Options via Menu Button`_
 
 - Save settings and re-bind transmitter to receiver
 
@@ -341,3 +375,4 @@ This is the high power receiver, which enables two-way telemetry communication a
 | Output Pins           | 12              |
 +-----------------------+-----------------+
 
+.. _V3 Complete System: http://www.dragonlinkrc.com/instructions/v3equipment/v3completesystem/

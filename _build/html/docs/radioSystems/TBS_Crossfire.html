@@ -92,13 +92,23 @@
 <p class="caption"><span class="caption-text">Radio Systems</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="dragon_link.html">DragonLink</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">TBS Crossfire</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TBS Crossfire</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-setup">Basic Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#binding">Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-receiver-interfaces">Configuring Receiver Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-transmit-power">Setting Transmit Power</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../APMDevel/APM_devel.html">Ardupilot Development Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../APMDevel/APM_devel.html#setup-build-environment">Setup Build Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../APMDevel/APM_devel.html#setup-git-and-clone-source-code">Setup Git and clone source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../APMDevel/APM_devel.html#building-the-code">Building the Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../APMDevel/APM_devel.html#setup-sitl-simulator">Setup SITL simulator</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Pinout</span></p>
 <ul>
@@ -172,8 +182,73 @@
             
   <div class="section" id="tbs-crossfire">
 <h1>TBS Crossfire<a class="headerlink" href="#tbs-crossfire" title="Permalink to this headline">¶</a></h1>
-<p>DragonLink is a UHF RC system. Compared to other UHF systems, its primary advantage is its support for the CRSF protocol, which offers a very low latency control link with integral telemetry data downlink.</p>
+<p>DragonLink is a 433MHz UHF RC system. Compared to other UHF systems, its primary advantage is its support for the CRSF protocol, which offers a very low latency control link with integral telemetry data downlink.</p>
 <p>TBS Crossfire has support for bidirectional telemetry, including MAVLink telemetry for ArduPilot, but this functionality is limited by the low downlink transmit power on Receivers.</p>
+<div class="section" id="basic-setup">
+<h2>Basic Setup<a class="headerlink" href="#basic-setup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="binding">
+<h3>Binding<a class="headerlink" href="#binding" title="Permalink to this headline">¶</a></h3>
+<p>Binding identifies one specific receiver to a transmitter. Procedure:</p>
+<ol class="arabic simple">
+<li>Place the Crossfire Transmitter in Bind Mode by navigating to the Configuration Menu and selecting <strong>Bind</strong></li>
+<li>Power the Crossfire receiver. If the receiver has previously been bound, press the small <strong>Binding</strong> pushbutton on the receiver</li>
+<li>Successful binding is indicated by slowly blinking status LED on the Transmitter and <em>Binding complete</em> message on the LED screen</li>
+<li>Power cycle both transmitter and receiver after successful binding</li>
+</ol>
+</div>
+<div class="section" id="configuring-receiver-interfaces">
+<h3>Configuring Receiver Interfaces<a class="headerlink" href="#configuring-receiver-interfaces" title="Permalink to this headline">¶</a></h3>
+<p>The signal output pins of the Crossfire Receiver can be configured to serve different purposes. Procedure:</p>
+<ol class="arabic simple">
+<li>Power on both the transmitter and receiver</li>
+<li>Navigate to the configuration menu. If the transmitter is communicating with the receiver, an option labelled by the receiver type, i.e. <strong>Rx Diversity</strong> or <strong>Rx Micro</strong> will be available.</li>
+<li><strong>RX Type/Output Map</strong>: Pick a channel and cycle through the available output options.</li>
+</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Option</td>
+<td>Definition</td>
+</tr>
+<tr class="row-even"><td>PWM1-12</td>
+<td>PWM signal pin for one corresponding channel</td>
+</tr>
+<tr class="row-odd"><td>PPM</td>
+<td>PPM signal pin carrying all channels in one stream</td>
+</tr>
+<tr class="row-even"><td>SBus</td>
+<td>SBus RC protocol signal pin</td>
+</tr>
+<tr class="row-odd"><td>RSSI</td>
+<td>RSSI signal pin, encoding signal strength as a PWM signal value</td>
+</tr>
+<tr class="row-even"><td>LQ</td>
+<td>Link Quality pin, encoded signal reception quality as a 0-300% value</td>
+</tr>
+<tr class="row-odd"><td>Serial Tx/Rx</td>
+<td>Serial pins for passing raw serial data</td>
+</tr>
+<tr class="row-even"><td>Mavlink Tx/Rx</td>
+<td>Serial pins for passing MAVLink telemetry data from autopilots</td>
+</tr>
+<tr class="row-odd"><td>CRSF Tx/Rx</td>
+<td>Serial pins for the bidirectional CRSF RC protocol</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Some hardware pins on some receivers cannot be configured to serve all functions listed above.</p>
+</div>
+</div>
+<div class="section" id="setting-transmit-power">
+<h3>Setting Transmit Power<a class="headerlink" href="#setting-transmit-power" title="Permalink to this headline">¶</a></h3>
+<p>The Crossfire transmitter may operate at 6 different transmit power levels. This can be configured via the OLED configurator. Default power output is 100mW which will provide approximately 10 km of range in ideal conditions. Power levels exceeding 500mW may be enabled only if an external battery is connected</p>
+</div>
+</div>
 </div>
 
 

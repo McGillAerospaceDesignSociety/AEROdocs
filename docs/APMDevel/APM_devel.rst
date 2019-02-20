@@ -47,10 +47,6 @@ follows.
 
 4. Select Finish to start downloading and installing the packages[1]
 
-.. raw:: html
-
-   <!-- end list -->
-
 Additional setup in Cygwin
 --------------------------
 
@@ -93,8 +89,10 @@ Setup Git and clone source code
 The ArduPilot project uses **git** for source code management and **GitHub** for source code hosting. To download and build the source code, the developer must:
 
 1.  Install a git client on your local computer. There are two options:
+
    a. Command line in the Cygwin terminal
    b. GUI client
+
 2.  Download a copy of the source code to your local computer
 
 Install Git Client
@@ -105,15 +103,13 @@ Option 1a, command line in the Cygwin terminal, will be available as long as the
 .. note::
    *git* is one of the many packages selected during installation
 
-Option 1b, GUI client, requires separate installation of the client software, such as [GitHub Desktop](https://desktop.github.com/). GUI clients will not be discussed below, but their usage should be fairly intuitive.
+Option 1b, GUI client, requires separate installation of the client software, such as `GitHub Desktop`_
+. GUI clients will not be discussed below, but their usage should be fairly intuitive.
 
 Cloning source code
 -------------------
 
-Ardupilot source code is hosted on Github
-
-.. _Ardupilot repository:
-   [https://github.com/ArduPilot/ardupilot]
+Ardupilot source code is hosted on Github: `Ardupilot Repository`_
 
 Clone refers to creating and downloading a local copy of the source code. This copy must be downloaded into the Cygwin file structure. The steps are as follows
 
@@ -121,12 +117,19 @@ Clone refers to creating and downloading a local copy of the source code. This c
 2.  Change directory to C:/cygwin64/home/user/, where user may be any account or username
 3.  Run the command 
 
-``git clone https://github.com/ArduPilot/ardupilot.git``
+   ::
+
+         git clone https://github.com/ArduPilot/ardupilot.git
 
 4.  Change directory to the newly created C:/cygwin64/home/user/ardupilot
-5.  Run the command `git submodule update --init --recursive`
+5.  Run the command 
 
-Submodules hold external code repositories that Ardupilot is dependent on, such as **ChibiOS**, the RTOS that Ardupilot uses, and **Waf**, the build system. 
+   ::
+
+         git submodule update --init --recursive
+
+.. note::
+   Submodules hold external code repositories that Ardupilot is dependent on, such as **ChibiOS**, the RTOS that Ardupilot uses, and **Waf**, the build system. 
 
 .. warning::
    Forgetting to update submodules is a common source of build failure.
@@ -154,7 +157,7 @@ Configure for hardware
 When building Ardupilot, a configure step is necessary to select the autopilot board. Run the following command when building for Pixracer,
 for example.
 
-::
+   ::
 
        ./waf configure --board Pixracer
 
@@ -163,7 +166,7 @@ Commonly used boards
 
 To list all supported autopilots, run the following command
 
-::
+   ::
 
        ./waf list_boards
 
@@ -187,7 +190,7 @@ Build and upload
 
 Run the following command to build ArduCopter
 
-::
+   ::
 
        ./waf copter
 
@@ -195,7 +198,7 @@ Similarly, ``./waf plane`` builds ArduPlane and ``./waf rover`` builds ArduRover
 
 Build commands have a ``--upload`` option for uploading the binary to an autopilot. Run the following command
 
-::
+   ::
 
        ./waf copter --upload
 
@@ -302,9 +305,11 @@ Low level vehicle command and control via MAVProxy directly is out of scope of t
 .. _here: http://ardupilot.org/dev/docs/copter-sitl-mavproxy-tutorial.html
 
 .. _here2: http://ardupilot.org/dev/docs/sitl-native-on-windows.html
-.. _FlightGear Install Page: http://www.flightgear.org/download/
 
 .. _here3: https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md
+.. _FlightGear Install Page: http://www.flightgear.org/download/
+.. _Ardupilot repository: https://github.com/ArduPilot/ardupilot
+.. _Github Desktop: https://desktop.github.com/
 .. _Waf: https://waf.io/
 .. _The Waf Book: https://waf.io/book/
 .. _Original Pixhawk with 2Mb flash: https://store.mrobotics.io/Genuine-PixHawk-Flight-Controller-p/mro-pixhawk1-minkit-mr.htm

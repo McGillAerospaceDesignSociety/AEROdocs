@@ -95,7 +95,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#basic-setup">Basic Setup</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#connect-dragonlink-transmitter-to-radio">Connect DragonLink Transmitter to radio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#binding">Binding</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-multiple-dragonlink-transmitters-in-proxity">Using multiple DragonLink Transmitters in proxity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-transmitter-id">Setting transmitter ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-receiver-interfaces">Configuring Receiver Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-transmit-power">Setting Transmit Power</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#received-signal-strength-indication-rssi">Received Signal Strength Indication (RSSI)</a></li>
 </ul>
 </li>
@@ -129,6 +131,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../APMDevel/APM_devel.html">Ardupilot Development Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../APMDevel/APM_devel.html#setup-build-environment">Setup Build Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../APMDevel/APM_devel.html#setup-git-and-clone-source-code">Setup Git and clone source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../APMDevel/APM_devel.html#building-the-code">Building the Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../APMDevel/APM_devel.html#setup-sitl-simulator">Setup SITL simulator</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Pinout</span></p>
 <ul>
@@ -202,11 +206,12 @@
             
   <div class="section" id="dragonlink">
 <h1>DragonLink<a class="headerlink" href="#dragonlink" title="Permalink to this headline">¶</a></h1>
-<p>DragonLink is a UHF RC system. Compared to other UHF systems, its primary advantage is its full support for bidirectional telemetry, including MAVLink telemetry for ArduPilot.</p>
-<p>Download the DragonLink GUI configurator and manual in the following page. There is no need to install the configurator.</p>
+<p>DragonLink is a 915MHz UHF RC system. Compared to other UHF systems, its primary advantage is its full support for bidirectional telemetry, including MAVLink telemetry for ArduPilot.</p>
+<p>Configuration for the DragonLink system is primarily done in a very user-friendly GUI configuration. Download the DragonLink GUI configurator and manual in the following page. There is no need to install from an .exe or .msi installer.</p>
+<p><a class="reference external" href="http://www.dragonlinkrc.com/instructions/v3equipment/v3completesystem/">V3 Complete System</a></p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Navigation in the GUI is intuitive and will not be explained in detail. All configuration instructions below will be labelled by the associated page/tab in the GUI configurator</p>
+<p class="last">Navigation in the GUI will not be explained in detail. All configuration instructions below will be labelled by the associated page/tab in the GUI configurator</p>
 </div>
 <div class="section" id="basic-setup">
 <h2>Basic Setup<a class="headerlink" href="#basic-setup" title="Permalink to this headline">¶</a></h2>
@@ -234,18 +239,72 @@
 </div>
 <div class="section" id="binding">
 <h3>Binding<a class="headerlink" href="#binding" title="Permalink to this headline">¶</a></h3>
-<p>Binding identifies one specific receiver to a transmitter</p>
+<p>Binding identifies one specific receiver to a transmitter. Procedure:</p>
 <ol class="arabic simple">
-<li>Place the DragonLink Transmitter in Bind mode in the GUI configurator (General Settings Page) or using the Menu Button.</li>
+<li>Connect DragonLink Transmitter to the GUI configurator.</li>
+<li><strong>General Settings</strong>: Place the DragonLink Transmitter in Bind mode</li>
 <li>Power on the Dragonlink Receiver</li>
 <li>Successful binding is indicated by flashing Blue and Green LEDs on the receiver</li>
 <li>Power cycle both transmitter and receiver after successful binding</li>
 </ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It possible to place the DragonLink Transmitter in Bind Mode without connecting to the GUI. See <a class="reference internal" href="#extra-options-via-menu-button">Extra Options via Menu Button</a> section.</p>
 </div>
-<div class="section" id="using-multiple-dragonlink-transmitters-in-proxity">
-<h3>Using multiple DragonLink Transmitters in proxity<a class="headerlink" href="#using-multiple-dragonlink-transmitters-in-proxity" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="setting-transmitter-id">
+<h3>Setting transmitter ID<a class="headerlink" href="#setting-transmitter-id" title="Permalink to this headline">¶</a></h3>
 <p>Each DragonLink Transmitter must be set an unique ID such that multiple DragonLink transmitters may be used in promixity. Setting ID is done in the GUI configurator.</p>
 <p><strong>General Settings</strong>: Set <em>ID</em> to a unique, non-default value, then rebind the receiver to the transmitter</p>
+</div>
+<div class="section" id="configuring-receiver-interfaces">
+<h3>Configuring Receiver Interfaces<a class="headerlink" href="#configuring-receiver-interfaces" title="Permalink to this headline">¶</a></h3>
+<p>The signal output pins of the DragonLink Receiver can be configured to serve different purposes. Procedure:</p>
+<ol class="arabic simple">
+<li>Connect Receiver to the GUI configurator and change settings as described below, and always save settings after each change</li>
+<li><strong>Rx Outputs</strong>: Pick a channel and select a function from the dropdown menu</li>
+</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Option</td>
+<td>Definition</td>
+</tr>
+<tr class="row-even"><td>PWM1-12</td>
+<td>PWM signal pin for one corresponding channel</td>
+</tr>
+<tr class="row-odd"><td>RSSI</td>
+<td>RSSI signal pin, encoding signal strength as a PWM signal value</td>
+</tr>
+<tr class="row-even"><td>SBus</td>
+<td>SBus RC protocol signal pin</td>
+</tr>
+<tr class="row-odd"><td>Spectrum</td>
+<td>Spectrum RC protocol signal pin</td>
+</tr>
+<tr class="row-even"><td>PPM</td>
+<td>PPM signal pin carrying all channels in one stream</td>
+</tr>
+<tr class="row-odd"><td>GPS RX</td>
+<td>Serial Receive pin for GPS module</td>
+</tr>
+<tr class="row-even"><td>Serial in/out</td>
+<td>Serial pins for passing raw serial data and MAVLink telemetry data from autopilots</td>
+</tr>
+<tr class="row-odd"><td>DragonLink OSD</td>
+<td>Serial pins for passing data to the DragonLink OSD</td>
+</tr>
+<tr class="row-even"><td>Vector Open Telm</td>
+<td>Signal pin for passing telemetry data from Eagletree Vector autopilots</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="setting-transmit-power">
+<h3>Setting Transmit Power<a class="headerlink" href="#setting-transmit-power" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="received-signal-strength-indication-rssi">
 <h3>Received Signal Strength Indication (RSSI)<a class="headerlink" href="#received-signal-strength-indication-rssi" title="Permalink to this headline">¶</a></h3>
@@ -254,9 +313,11 @@
 <p class="first admonition-title">Tip</p>
 <p class="last">Digital RSSI is generally recommended because not all autopilots have analog ports to read analog RSSI.</p>
 </div>
-<p>Connect Receiver to the GUI configurator and change settings as described below, and always save settings after each change</p>
-<p><strong>Receiver Outputs</strong>: Configure channel mixing in the PPM / SBUS stream under <em>PPM/S-Bus out</em>. Select any channel other than channel 1-5 to output Digital RSSI.</p>
-<p><strong>Set ArduPilot Parameters</strong>: Set Parameters as follows</p>
+<ol class="arabic simple">
+<li>Connect Receiver to the GUI configurator and change settings as described below, and always save settings after each change</li>
+<li><strong>Receiver Outputs</strong>: Configure channel mixing in the PPM / SBUS stream under <em>PPM/S-Bus out</em>. Select any channel other than channel 1-5 to output Digital RSSI.</li>
+<li><strong>Set ArduPilot Parameters</strong>: Set Parameters as follows</li>
+</ol>
 <table border="1" class="docutils">
 <colgroup>
 <col width="30%" />
@@ -286,7 +347,9 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Display RSSI on Mission Planner</strong>: Right-Click on the HUD, click <strong>User Items</strong>, and check the <strong>rxrssi</strong> item in the window that opens up. Alternately, Double-Click on any flight data field on the <strong>Quick</strong> tab under the HUD, and check the <strong>rxrssi</strong> item in the window that opens up.</p>
+<ol class="arabic simple" start="4">
+<li><strong>Display RSSI on Mission Planner</strong>: Right-Click on the HUD, click <strong>User Items</strong>, and check the <strong>rxrssi</strong> item in the window that opens up. Alternately, Double-Click on any flight data field on the <strong>Quick</strong> tab under the HUD, and check the <strong>rxrssi</strong> item in the window that opens up.</li>
+</ol>
 </div>
 </div>
 <div class="section" id="telemetry-setup">
@@ -359,7 +422,7 @@
 - Select <strong>Radio Modem</strong> for Bluetooth or USB depending on preferred connection method to Mission Planner.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Once the USB function is set to Radio Modem, the transmitter will not connect to the GUI configurator until the GUI config USB function is re-enabled again using the Menu button on the transmitter</p>
+<p class="last">Once the USB function is set to Radio Modem, the transmitter will not connect to the GUI configurator until the GUI config USB function is re-enabled again by selecting one of the <a class="reference internal" href="#extra-options-via-menu-button">Extra Options via Menu Button</a></p>
 </div>
 <ul class="simple">
 <li>Save settings and re-bind transmitter to receiver</li>
