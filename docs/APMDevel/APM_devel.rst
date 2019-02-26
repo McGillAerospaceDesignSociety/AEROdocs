@@ -308,7 +308,6 @@ Low level vehicle command and control via MAVProxy directly is out of scope of t
 
 .. _here3: https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md
 .. _FlightGear Install Page: http://www.flightgear.org/download/
-.. _Ardupilot repository: https://github.com/ArduPilot/ardupilot
 .. _Github Desktop: https://desktop.github.com/
 .. _Waf: https://waf.io/
 .. _The Waf Book: https://waf.io/book/
