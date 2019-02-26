@@ -22,7 +22,6 @@ excel in terms of flight dynamics or efficiency.
 .. figure:: Graphics/singlecopter.png
    :alt: image
 
-   image
 
 -  Single/Coaxcopters may rely on rotor pitch control or control serfaces to achieve control and stability.
 -  Their flight dynamics are somewhat complex but can still be realized on many autopilot systems
