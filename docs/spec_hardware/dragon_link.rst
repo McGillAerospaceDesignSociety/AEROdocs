@@ -96,10 +96,10 @@ Setting Transmit Power
 
 Received Signal Strength Indication (RSSI)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-RSSI is a useful indicator of the remaining link budget available to the vehicle. DragonLink receivers may send an analog RSSI signal (0-3.3V) or a digital RSSI signal (embedded into the PPM/SBus stream). This section only describes configuration for Digital RSSI
+RSSI indicates the remaining link budget available to the vehicle. DragonLink receivers may send an analog RSSI signal (0-3.3V) or a digital RSSI signal (embedded into the PPM/SBus stream). This section only describes configuration for Digital RSSI
 
 .. Tip::
-   Digital RSSI is generally recommended because not all autopilots have analog ports to read analog RSSI.
+   Digital RSSI is recommended because not all autopilots have analog ports to read analog RSSI.
 
 1. Connect Receiver to the GUI configurator and change settings as described below, and always save settings after each change
 2. **Receiver Outputs**: Configure channel mixing in the PPM / SBUS stream under *PPM/S-Bus out*. Select any channel other than channel 1-5 to output Digital RSSI. 

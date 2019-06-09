@@ -1,0 +1,6 @@
+1.3GHz FPV
+==========
+
+Video transmission on the 900-1.3GHz band offers substantially increased range over video transmission on 2.4GHz or 5.8GHz. 
+
+1.3GHz radiowaves propagates by line of sight (LOS), and do not bend or diffract easily. 

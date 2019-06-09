@@ -1,0 +1,799 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DragonLink &mdash; AERO-McGill  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="TBS Crossfire" href="TBS_Crossfire.html" />
+    <link rel="prev" title="Autopilot Hardware" href="../design_eval/autopilot_eval.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Our fleet</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fleet/fleet.html">AERO McGill’s Fleet</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Basic Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/mc_airframe.html">Multicopter Airframes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/vtol_airframe.html">VTOL airframe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/perf_param.html">System Performance Parameters</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Basic Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic_setup/AP_hw.html">Basic Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_setup/AP_pwr.html">Powering the autopilot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_setup/AP_radio.html">Radio Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_setup/AP_telem.html">Telemetry Radio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_setup/AP_gps.html">GPS and Compass</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design and Evaluation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../design_eval/vehicle_eval.html">Vehicle Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design_eval/autopilot_eval.html">Autopilot Hardware</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Specific Hardware</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DragonLink</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-setup">Basic Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connect-dragonlink-transmitter-to-radio">Connect DragonLink Transmitter to radio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#binding">Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-transmitter-id">Setting transmitter ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-receiver-interfaces">Configuring Receiver Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-transmit-power">Setting Transmit Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#received-signal-strength-indication-rssi">Received Signal Strength Indication (RSSI)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#telemetry-setup">Telemetry Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connect-dragonlink-receiver-to-autopilot">Connect DragonLink receiver to Autopilot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#receiver-configuration">Receiver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transmitter-configuration">Transmitter Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-ardupilot-parameters">Set ArduPilot Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#extra-options-via-menu-button">Extra Options via Menu Button</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#range-test-mode">Range Test Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bind-mode">Bind Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#servo-test-mode">Servo Test Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-transmitter-id">Change Transmitter ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exit-usb-telemetry-mode">Exit USB Telemetry Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hardware">Hardware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#v3-advanced-transmitter-slim">V3 Advanced Transmitter (Slim)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#micro-receiver">Micro Receiver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-receiver">Advanced Receiver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TBS_Crossfire.html">TBS Crossfire</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html">Ardupilot Development Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html#setup-build-environment">Setup Build Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html#setup-git-and-clone-source-code">Setup Git and clone source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html#building-the-code">Building the Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html#setup-sitl-simulator">Setup SITL simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/mavlink_dev.html">MAVLink Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Pinout</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html">Autopilots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#radios-and-transceivers">Radios and Transceivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#companion-computers">Companion Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#others">Others</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AERO-McGill</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>DragonLink</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/spec_hardware/dragon_link.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dragonlink">
+<h1>DragonLink<a class="headerlink" href="#dragonlink" title="Permalink to this headline">¶</a></h1>
+<p>DragonLink is a 915MHz UHF RC system. Compared to other UHF systems, its primary advantage is its full support for bidirectional telemetry, including MAVLink telemetry for ArduPilot.</p>
+<p>Configuration for the DragonLink system is primarily done in a very user-friendly GUI configuration. Download the DragonLink GUI configurator and manual in the following page. There is no need to install from an .exe or .msi installer.</p>
+<p><a class="reference external" href="http://www.dragonlinkrc.com/instructions/v3equipment/v3completesystem/">V3 Complete System</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Navigation in the GUI will not be explained in detail. All configuration instructions below will be labelled by the associated page/tab in the GUI configurator</p>
+</div>
+<div class="section" id="basic-setup">
+<h2>Basic Setup<a class="headerlink" href="#basic-setup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="connect-dragonlink-transmitter-to-radio">
+<h3>Connect DragonLink Transmitter to radio<a class="headerlink" href="#connect-dragonlink-transmitter-to-radio" title="Permalink to this headline">¶</a></h3>
+<p>DragonLink works with any radio that supports RC signal output to external transmitters. The very popular FrSky Taranis radio connects to external transmitters via pins in the JR module-bay behind the radio. Connect the radio pins to the DragonLink Transmitter as follows.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Use the locking latch on the DragonLink Transmitter connector to identify polarity!</p>
+</div>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="../../_images/pin_conn.png"><img alt="Taranis to DragonLink" src="../../_images/pin_conn.png" style="width: 200.0px; height: 225.0px;" /></a>
+<p class="caption"><span class="caption-text">Read as if holding radio upright</span></p>
+</div>
+<p><em>For advanced users: When using TBS’s CRSF protocol, modify the connection to the radio such that the radio signal follows the Green wire in the diagram</em></p>
+<p>Connect Transmitter to the GUI configurator and change settings as described below, and always save settings after each change</p>
+<p><strong>General Settings</strong>: Set <em>input 1</em> to the signal protocol used by the RC transmitter on its trainer jack or module-bay pins. The following protocols are supported:</p>
+<ul class="simple">
+<li>u-PPM</li>
+<li>S.Bus</li>
+<li>CRSF (Sent on the “<em>telemetry</em>” pin on Taranis transmitters)</li>
+<li>u-PPM 14SG</li>
+<li>PPM</li>
+</ul>
+</div>
+<div class="section" id="binding">
+<h3>Binding<a class="headerlink" href="#binding" title="Permalink to this headline">¶</a></h3>
+<p>Binding identifies one specific receiver to a transmitter. Procedure:</p>
+<ol class="arabic simple">
+<li>Connect DragonLink Transmitter to the GUI configurator.</li>
+<li><strong>General Settings</strong>: Place the DragonLink Transmitter in Bind mode</li>
+<li>Power on the Dragonlink Receiver</li>
+<li>Successful binding is indicated by flashing Blue and Green LEDs on the receiver</li>
+<li>Power cycle both transmitter and receiver after successful binding</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It possible to place the DragonLink Transmitter in Bind Mode without connecting to the GUI. See <a class="reference internal" href="#extra-options-via-menu-button">Extra Options via Menu Button</a> section.</p>
+</div>
+</div>
+<div class="section" id="setting-transmitter-id">
+<h3>Setting transmitter ID<a class="headerlink" href="#setting-transmitter-id" title="Permalink to this headline">¶</a></h3>
+<p>Each DragonLink Transmitter must be set an unique ID such that multiple DragonLink transmitters may be used in promixity. Setting ID is done in the GUI configurator.</p>
+<p><strong>General Settings</strong>: Set <em>ID</em> to a unique, non-default value, then rebind the receiver to the transmitter</p>
+</div>
+<div class="section" id="configuring-receiver-interfaces">
+<h3>Configuring Receiver Interfaces<a class="headerlink" href="#configuring-receiver-interfaces" title="Permalink to this headline">¶</a></h3>
+<p>The signal output pins of the DragonLink Receiver can be configured to serve different purposes. Procedure:</p>
+<ol class="arabic simple">
+<li>Connect Receiver to the GUI configurator and change settings as described below, and always save settings after each change</li>
+<li><strong>Rx Outputs</strong>: Pick a channel and select a function from the dropdown menu</li>
+</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Option</td>
+<td>Definition</td>
+</tr>
+<tr class="row-even"><td>PWM1-12</td>
+<td>PWM signal pin for one corresponding channel</td>
+</tr>
+<tr class="row-odd"><td>RSSI</td>
+<td>RSSI signal pin, encoding signal strength as a PWM signal value</td>
+</tr>
+<tr class="row-even"><td>SBus</td>
+<td>SBus RC protocol signal pin</td>
+</tr>
+<tr class="row-odd"><td>Spectrum</td>
+<td>Spectrum RC protocol signal pin</td>
+</tr>
+<tr class="row-even"><td>PPM</td>
+<td>PPM signal pin carrying all channels in one stream</td>
+</tr>
+<tr class="row-odd"><td>GPS RX</td>
+<td>Serial Receive pin for GPS module</td>
+</tr>
+<tr class="row-even"><td>Serial in/out</td>
+<td>Serial pins for passing raw serial data and MAVLink telemetry data from autopilots</td>
+</tr>
+<tr class="row-odd"><td>DragonLink OSD</td>
+<td>Serial pins for passing data to the DragonLink OSD</td>
+</tr>
+<tr class="row-even"><td>Vector Open Telm</td>
+<td>Signal pin for passing telemetry data from Eagletree Vector autopilots</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="setting-transmit-power">
+<h3>Setting Transmit Power<a class="headerlink" href="#setting-transmit-power" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="received-signal-strength-indication-rssi">
+<h3>Received Signal Strength Indication (RSSI)<a class="headerlink" href="#received-signal-strength-indication-rssi" title="Permalink to this headline">¶</a></h3>
+<p>RSSI indicates the remaining link budget available to the vehicle. DragonLink receivers may send an analog RSSI signal (0-3.3V) or a digital RSSI signal (embedded into the PPM/SBus stream). This section only describes configuration for Digital RSSI</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Digital RSSI is recommended because not all autopilots have analog ports to read analog RSSI.</p>
+</div>
+<ol class="arabic simple">
+<li>Connect Receiver to the GUI configurator and change settings as described below, and always save settings after each change</li>
+<li><strong>Receiver Outputs</strong>: Configure channel mixing in the PPM / SBUS stream under <em>PPM/S-Bus out</em>. Select any channel other than channel 1-5 to output Digital RSSI.</li>
+<li><strong>Set ArduPilot Parameters</strong>: Set Parameters as follows</li>
+</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="15%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Parameter</td>
+<td>Value</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>RSSI_TYPE</td>
+<td>2</td>
+<td>RC Channel PWM Value</td>
+</tr>
+<tr class="row-odd"><td>RSSI_CHANNEL</td>
+<td>Any &gt;5</td>
+<td>Receiver RSSI channel number</td>
+</tr>
+<tr class="row-even"><td>RSSI_CHAN_LOW</td>
+<td>1500</td>
+<td>RSSI PWM low value</td>
+</tr>
+<tr class="row-odd"><td>RSSI_CHAN_HIGH</td>
+<td>1900</td>
+<td>RSSI PWM high value</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="4">
+<li><strong>Display RSSI on Mission Planner</strong>: Right-Click on the HUD, click <strong>User Items</strong>, and check the <strong>rxrssi</strong> item in the window that opens up. Alternately, Double-Click on any flight data field on the <strong>Quick</strong> tab under the HUD, and check the <strong>rxrssi</strong> item in the window that opens up.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="telemetry-setup">
+<h2>Telemetry Setup<a class="headerlink" href="#telemetry-setup" title="Permalink to this headline">¶</a></h2>
+<p>To enable MAVLink telemetry communication, both DragonLink Hardware and Software must be setup</p>
+<div class="section" id="connect-dragonlink-receiver-to-autopilot">
+<h3>Connect DragonLink receiver to Autopilot<a class="headerlink" href="#connect-dragonlink-receiver-to-autopilot" title="Permalink to this headline">¶</a></h3>
+<p>Connect the DragonLink receiver’s UEXP port to the Pixhawk Telem1 or Telem2 port as shown in diagrams below.</p>
+<a class="reference internal image-reference" href="../../_images/6pos_GH.png"><img alt="For Advanced Receivers Only" src="../../_images/6pos_GH.png" style="width: 312.5px; height: 200.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/5pos_GH.png"><img alt="For other Receivers" src="../../_images/5pos_GH.png" style="width: 300.0px; height: 200.0px;" /></a>
+<p>When using the Advanced Receiver with Flow Control, stock Pixhawk telemetry cables can be used. Otherwise, a custom cable must be created with the Flow Control wires removed. In all cases, remove the power wire to prevent power supplies fighting each other.</p>
+</div>
+<div class="section" id="receiver-configuration">
+<h3>Receiver Configuration<a class="headerlink" href="#receiver-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Connect Receiver to the GUI configurator and change settings as described below, and always save settings after each change</p>
+<p><strong>Radio Modem</strong>: Set <em>Input/output buad rate</em> to 38400 (57600 when using Flow Control) and click <em>Save Baud</em></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Turn on Mavlink Decoding to enable flight data display on RC transmitter screen. Otherwise keep disabled</p>
+</div>
+<p><strong>Receiver Outputs</strong>: Set the outputs for the 5-pin UEXP port as follows</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Setting</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>UEXP con pin 3</td>
+<td>Serial In</td>
+</tr>
+<tr class="row-odd"><td>UEXP con pin 4</td>
+<td>Serial Out</td>
+</tr>
+</tbody>
+</table>
+<p>When using Flow Control, set the outputs for the 6-pin UEXP port as follows</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Setting</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>UEXP con pin 2</td>
+<td>Serial In</td>
+</tr>
+<tr class="row-odd"><td>UEXP con pin 3</td>
+<td>Serial Out</td>
+</tr>
+<tr class="row-even"><td>UEXP con pin 4</td>
+<td>CTS</td>
+</tr>
+<tr class="row-odd"><td>UEXP con pin 5</td>
+<td>RTS</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="transmitter-configuration">
+<h3>Transmitter Configuration<a class="headerlink" href="#transmitter-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Adjust settings in the GUI configurator as described below, and always save settings after each change
+<strong>RF Settings</strong>: Select 9X mode</p>
+<p><strong>External Connections</strong>
+- Set baudrate to 57600
+- Select <strong>Radio Modem</strong> for Bluetooth or USB depending on preferred connection method to Mission Planner.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Once the USB function is set to Radio Modem, the transmitter will not connect to the GUI configurator until the GUI config USB function is re-enabled again by selecting one of the <a class="reference internal" href="#extra-options-via-menu-button">Extra Options via Menu Button</a></p>
+</div>
+<ul class="simple">
+<li>Save settings and re-bind transmitter to receiver</li>
+</ul>
+</div>
+<div class="section" id="set-ardupilot-parameters">
+<h3>Set ArduPilot Parameters<a class="headerlink" href="#set-ardupilot-parameters" title="Permalink to this headline">¶</a></h3>
+<p><strong>Serial Port</strong>: SERIAL1, SR1 and SER1 specifies that the Telem1 hardware port is being configured. If Telem2 is used, change SERIAL2 and so on.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="15%" />
+<col width="48%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Parameter</td>
+<td>Value</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>SERIAL1_PROTOCOL</td>
+<td>1/2</td>
+<td>Mavlink 1 or 2</td>
+</tr>
+<tr class="row-odd"><td>SERIAL1_BAUD</td>
+<td>38</td>
+<td>38400 Bauds</td>
+</tr>
+<tr class="row-even"><td>BRD_SER1_RTSCTS</td>
+<td>0</td>
+<td>Disable Flow Control</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set <strong>SERIAL1_BAUD</strong> to 57 and <strong>BRD_SER1_RTSCTS</strong> to 1 when using Flow Control</p>
+</div>
+<p><strong>Data streaming Rate</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="72%" />
+<col width="28%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Parameter</td>
+<td>Value</td>
+</tr>
+<tr class="row-even"><td>SR1_EXT_STAT</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>SR1_EXTRA1</td>
+<td>5</td>
+</tr>
+<tr class="row-even"><td>SR1_EXTRA2</td>
+<td>5</td>
+</tr>
+<tr class="row-odd"><td>SR1_EXTRA3</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>SR1_PARAMS</td>
+<td>10</td>
+</tr>
+<tr class="row-odd"><td>SR1_POSITION</td>
+<td>3</td>
+</tr>
+<tr class="row-even"><td>SR1_RAW_CTRL</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>SR1_RAW_SENS</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>SR1_RC_CHAN</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="extra-options-via-menu-button">
+<h2>Extra Options via Menu Button<a class="headerlink" href="#extra-options-via-menu-button" title="Permalink to this headline">¶</a></h2>
+<p>The Menu button on top of the DragonLink transmitter provides access to important configuration options listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="28%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">LED Indicator</th>
+<th class="head">Beeper Indicator</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Range Test</td>
+<td>Green</td>
+<td>1 beep</td>
+</tr>
+<tr class="row-odd"><td>Bind Mode</td>
+<td>Blue</td>
+<td>2 beeps</td>
+</tr>
+<tr class="row-even"><td>Servo Test</td>
+<td>Yellow</td>
+<td>3 beeps</td>
+</tr>
+<tr class="row-odd"><td>Change Tx ID</td>
+<td>Red</td>
+<td>4 beeps</td>
+</tr>
+<tr class="row-even"><td>Exit USB Telem mode</td>
+<td>White</td>
+<td>5 beeps</td>
+</tr>
+</tbody>
+</table>
+<p>Press the Menu button while powering on the transmitter, then keep the button pressed to move down the list options. Release the button upon seeing/hearing the associated LED/beeper indicator to select an option.</p>
+<div class="section" id="range-test-mode">
+<h3>Range Test Mode<a class="headerlink" href="#range-test-mode" title="Permalink to this headline">¶</a></h3>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Range test is useful for diagnosing faults, interference and misconfiguration that can potentially cause a crash</p>
+</div>
+<p>Greatly reduces RF transmitting power to simulate the effects of extreme range</p>
+<p>Procedure:</p>
+<ul>
+<li><p class="first">Select Range Test Mode using the Menu Button</p>
+</li>
+<li><p class="first">Orient the transmitter with the antenna vertical</p>
+</li>
+<li><p class="first">Carry the model aircraft away from the transmitter, keeping the aircraft oriented as if under normal flight conditions</p>
+</li>
+<li><p class="first">Monitor the LED state on the transmitter, which indicates a loss of signal by turning Off.</p>
+<blockquote>
+<div><ul class="simple">
+<li>LED On - Excellent Signal</li>
+<li>LED Flickering - Acceptable Signal</li>
+<li>LED Off for 50% of the time - Poor signal, range limit reached</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Upon reaching the range limit, measure distance between transmitter and model aircraft</p>
+</li>
+<li><p class="first">In normal conditions, maximum range achievable in Range Test mode is approximately 10m (30ft). If less than 5m (15ft) range can be achieved, check setup and do not fly.</p>
+</li>
+<li><p class="first">Press the menu button to exit Range Test Mode</p>
+</li>
+</ul>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<ol class="last arabic simple">
+<li>Range tests should be conducted on-location, with a clear line-of-sight and with environmental conditions matching those of the planned flight</li>
+</ol>
+</div>
+</div>
+<div class="section" id="bind-mode">
+<h3>Bind Mode<a class="headerlink" href="#bind-mode" title="Permalink to this headline">¶</a></h3>
+<p>Puts the transmitter in Bind mode without connecting to a computer running the GUI configurator. Refer to Bind section in Basic Setup for binding Procedure.</p>
+</div>
+<div class="section" id="servo-test-mode">
+<h3>Servo Test Mode<a class="headerlink" href="#servo-test-mode" title="Permalink to this headline">¶</a></h3>
+<p>Sweeps all channels between maximum and minimum signal values.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Make sure only servos but not motors are powered when conducting servo test</p>
+</div>
+<p>Procedure:</p>
+<ul class="simple">
+<li>Select Servo Test Mode using the Menu Button</li>
+<li>Check servo travel of each servo</li>
+<li>Press the menu button to exit Servo Test Mode</li>
+</ul>
+</div>
+<div class="section" id="change-transmitter-id">
+<h3>Change Transmitter ID<a class="headerlink" href="#change-transmitter-id" title="Permalink to this headline">¶</a></h3>
+<p>Allows multiple DragonLink transmitters with different IDs to operate at the same time.</p>
+<p>Procedure:</p>
+<ul class="simple">
+<li>Select Change Transmitter ID using the Menu Button</li>
+<li>Successful ID change is indicated by flashing red LED on the transmitter</li>
+<li>Power cycle the transmitter after changing transmitter ID</li>
+</ul>
+</div>
+<div class="section" id="exit-usb-telemetry-mode">
+<h3>Exit USB Telemetry Mode<a class="headerlink" href="#exit-usb-telemetry-mode" title="Permalink to this headline">¶</a></h3>
+<p>Sets the USB port to interface with GUI configurator instead of outputting telemetry data to Ground Control Station</p>
+<p>Procedure:</p>
+<ul class="simple">
+<li>Select Exit USB Telemetry Mode using the Menu Button</li>
+<li>Successful USB function change is indicated by flashing white LED on the transmitter and the power up tone playing</li>
+<li>Power cycle the transmitter after exiting USB telemetry mode</li>
+</ul>
+</div>
+</div>
+<div class="section" id="hardware">
+<h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
+<p>The DragonLink system consists of a transmitter module and three different types of receivers. A brief introduction and specifications are given below.</p>
+<div class="section" id="v3-advanced-transmitter-slim">
+<h3>V3 Advanced Transmitter (Slim)<a class="headerlink" href="#v3-advanced-transmitter-slim" title="Permalink to this headline">¶</a></h3>
+<p>This is the latest and recommended model of DragonLink transmitter, with slightly lower height (thickness) than previous models</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="58%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">V3 Advanced Transmitter (Slim)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Input Voltage</td>
+<td>5-18V</td>
+</tr>
+<tr class="row-odd"><td>Operating Frequency</td>
+<td>433 MHz</td>
+</tr>
+<tr class="row-even"><td>Max Transmit Power</td>
+<td>800mW</td>
+</tr>
+<tr class="row-odd"><td>Dimensions</td>
+<td>79x60x15mm</td>
+</tr>
+<tr class="row-even"><td>Weight</td>
+<td>90g</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="micro-receiver">
+<h3>Micro Receiver<a class="headerlink" href="#micro-receiver" title="Permalink to this headline">¶</a></h3>
+<p>This is the standard receiver in the DragonLink system.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="58%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">V3 Micro Receiver</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Input Voltage</td>
+<td>5-9V</td>
+</tr>
+<tr class="row-odd"><td>Max Transmit Power</td>
+<td>25mW</td>
+</tr>
+<tr class="row-even"><td>Dimensions</td>
+<td>55x22x12mm</td>
+</tr>
+<tr class="row-odd"><td>Weight</td>
+<td>10g</td>
+</tr>
+<tr class="row-even"><td>Output Pins</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="advanced-receiver">
+<h3>Advanced Receiver<a class="headerlink" href="#advanced-receiver" title="Permalink to this headline">¶</a></h3>
+<p>This is the high power receiver, which enables two-way telemetry communication at long ranges.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="58%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">V3 Micro Receiver</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Input Voltage</td>
+<td>5-9V</td>
+</tr>
+<tr class="row-odd"><td>Max Transmit Power</td>
+<td>25mW</td>
+</tr>
+<tr class="row-even"><td>Dimensions</td>
+<td>70x36x11mm</td>
+</tr>
+<tr class="row-odd"><td>Weight</td>
+<td>30g</td>
+</tr>
+<tr class="row-even"><td>Output Pins</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="TBS_Crossfire.html" class="btn btn-neutral float-right" title="TBS Crossfire" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../design_eval/autopilot_eval.html" class="btn btn-neutral float-left" title="Autopilot Hardware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hs293Go
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

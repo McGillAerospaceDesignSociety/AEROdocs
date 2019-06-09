@@ -1,0 +1,452 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MAVLink Development &mdash; AERO-McGill  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Autopilots" href="../pinouts/pinouts.html" />
+    <link rel="prev" title="Ardupilot Development Quickstart" href="APM_devel.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Our fleet</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fleet/fleet.html">AERO McGill’s Fleet</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Basic Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/mc_airframe.html">Multicopter Airframes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/vtol_airframe.html">VTOL airframe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/sensors.html">Sensors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design and Evaluation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../design_eval/vehicle_eval.html">Vehicle Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design_eval/autopilot_eval.html">Autopilot Hardware</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Radio Systems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../radioSystems/dragon_link.html">DragonLink</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../radioSystems/TBS_Crossfire.html">TBS Crossfire</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="APM_devel.html">Ardupilot Development Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="APM_devel.html#setup-build-environment">Setup Build Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="APM_devel.html#setup-git-and-clone-source-code">Setup Git and clone source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="APM_devel.html#building-the-code">Building the Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="APM_devel.html#setup-sitl-simulator">Setup SITL simulator</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MAVLink Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mavlink-code-submodule">MAVLink Code Submodule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-custom-mavlink-message">Create custom mavlink message</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xml-definitions">XML Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling-xml-to-c-c">Compiling XML to C/C++</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sending-custom-mavlink-messages">Sending custom MAVLink messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enabling-the-mavlink-stream">Enabling the MAVLink stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-the-mavlink-stream">Reading the MAVLink Stream</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-qgroundcontrol-build">Configuring QGroundControl build</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Pinout</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html">Autopilots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#radios-and-transceivers">Radios and Transceivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#companion-computers">Companion Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#others">Others</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AERO-McGill</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>MAVLink Development</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/development/mavlink_dev.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mavlink-development">
+<h1>MAVLink Development<a class="headerlink" href="#mavlink-development" title="Permalink to this headline">¶</a></h1>
+<p>The objective of MAVLink messaging is to send data to Ground Control Stations for inspection/visualization.</p>
+<p>For demonstration purposes, the MAVLink message will be an analog voltage outputted by a rotary potentiometer connected to a Pixhawk’s analog port. Hence, the new message definition is <code class="docutils literal notranslate"><span class="pre">msg/ANALOG_POT.msg</span></code>.</p>
+<div class="section" id="mavlink-code-submodule">
+<h2>MAVLink Code Submodule<a class="headerlink" href="#mavlink-code-submodule" title="Permalink to this headline">¶</a></h2>
+<p>MAVLink is a submodule in ArduPilot firmware. Its location is <code class="docutils literal notranslate"><span class="pre">C:\cygwin64\home\hells\ardupilot\modules\mavlink\</span></code> if installation per previous documentation is done. Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--init</span> <span class="pre">--recursive</span></code> to update this submodule.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All paths in the following article are relative to the mavlink base directory described above.</p>
+</div>
+</div>
+<div class="section" id="create-custom-mavlink-message">
+<h2>Create custom mavlink message<a class="headerlink" href="#create-custom-mavlink-message" title="Permalink to this headline">¶</a></h2>
+<p>MAVLink communication is basd on messages. All messages are initially defined as an .xml file in <code class="docutils literal notranslate"><span class="pre">\message_definitions</span></code>, then converted to C/C++ code. A custom message, for example <code class="docutils literal notranslate"><span class="pre">ANALOG_POT</span></code>, may be created and formatted as follows.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">It is recommended to put custom messages in a separate file, i.e. <code class="docutils literal notranslate"><span class="pre">custom_messages.xml</span></code>, to prevent confusion with mainstream ArduPilot / PX4 messages</p>
+</div>
+<div class="code xml highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;mavlink&gt;
+  &lt;include&gt;common.xml&lt;/include&gt;
+  &lt;include&gt;ardupilotmega.xml&lt;/include&gt;
+  &lt;version&gt;3&lt;/version&gt;
+  &lt;messages&gt;
+    &lt;message id=&quot;190&quot; name=&quot;ANALOG_POT&quot;&gt;
+      &lt;description&gt;Analog port reading for potentiometer&lt;/description&gt;
+      &lt;field type=&quot;float&quot; name=&quot;VCCA&quot;&gt;Raw ADC reading&lt;/field&gt;
+      &lt;field type=&quot;float&quot; name=&quot;POT_DEG&quot; units=&quot;deg&quot;&gt;Angle of potentiometer in degrees&lt;/field&gt;
+    &lt;/message&gt;
+  &lt;/messages&gt;
+&lt;/mavlink&gt;
+</pre></div>
+</div>
+<div class="section" id="xml-definitions">
+<h3>XML Definitions<a class="headerlink" href="#xml-definitions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">&lt;message&gt;&lt;/message&gt;</span></code> : Encapsulates one message</li>
+<li><code class="docutils literal notranslate"><span class="pre">id=“190”</span></code> : Index number of the message. In general, id 150-240 is
+reserved for custom messages</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;description&gt;&lt;/description&gt;</span></code> : Describes the message, and will be converted into comments during C/C++ code generation</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;field&gt;&lt;/field&gt;</span></code> : Encodes one field of the message</li>
+<li><code class="docutils literal notranslate"><span class="pre">type=“float”</span></code> Defines data type of the field</li>
+</ul>
+</div>
+<div class="section" id="compiling-xml-to-c-c">
+<h3>Compiling XML to C/C++<a class="headerlink" href="#compiling-xml-to-c-c" title="Permalink to this headline">¶</a></h3>
+<p>The message definition is compiled into C/C++ code by a python script <code class="docutils literal notranslate"><span class="pre">mavgen.py</span></code>. This script is part of a set of python tools under <strong>Pymavlink</strong> located at <code class="docutils literal notranslate"><span class="pre">\pymavlink\generator</span></code>.</p>
+<p>In order to run <code class="docutils literal notranslate"><span class="pre">mavgen.py</span></code> at the <code class="docutils literal notranslate"><span class="pre">\message_definitions</span></code> directory, add the following line to the end of <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>. This adds the path to <code class="docutils literal notranslate"><span class="pre">mavgen.py</span></code> to Cygwin</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>export PATH=$PATH:$HOME/ardupilot/modules/mavlink/pymavlink/generator</dd>
+</dl>
+<ul class="simple">
+<li>XML: .xml file of message definition</li>
+<li><code class="docutils literal notranslate"><span class="pre">-o</span></code>: Specify output directory, generally set to be <code class="docutils literal notranslate"><span class="pre">mavlink/include/mavlink/v2.0</span></code>. Code generation will create a new folder in this directory to contain the message headers.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--lang</span></code>:</li>
+</ul>
+<blockquote>
+<div>C++11 for PX4 Firmware and QGroundControl mavlink library</div></blockquote>
+<ul class="simple">
+<li>Validate/Validate Units: Manually check your .xml definition, and omit validation to avoid getting spurious errors</li>
+</ul>
+</div>
+</div>
+<div class="section" id="sending-custom-mavlink-messages">
+<h2>Sending custom MAVLink messages<a class="headerlink" href="#sending-custom-mavlink-messages" title="Permalink to this headline">¶</a></h2>
+<p>Sending and receiving MAVLink messages is mostly handled in the various C/C++ files in <code class="docutils literal notranslate"><span class="pre">src/modules/mavlink</span></code>.</p>
+<p>A class for the message should be created in <code class="docutils literal notranslate"><span class="pre">mavlink_messages.cpp</span></code>.
+First, add the headers of the uORB and mavlink messages.
+<code class="docutils literal notranslate"><span class="pre">c++</span> <span class="pre">#include</span> <span class="pre">&lt;uORB/topics/ANALOG_POT.h&gt;</span> <span class="pre">#include</span> <span class="pre">&lt;v2.0/custom_msgs/mavlink_msg_ANALOG_POT.h&gt;</span></code></p>
+<p>Then create the class</p>
+<div class="code c++ highlight-default notranslate"><div class="highlight"><pre><span></span>class MavlinkStreamAnalogPot : public MavlinkStream
+{
+public:
+    const char *get_name() const
+    {
+        return MavlinkStreamAnalogPot::get_name_static();
+    }
+    static const char *get_name_static()
+    {
+        return &quot;ANALOG_POT&quot;;
+    }
+    static uint16_t get_id_static()
+    {
+        return MAVLINK_MSG_ID_ANALOG_POT;
+    }
+  uint16_t get_id()
+  {
+    return get_id_static();
+  }
+    static MavlinkStream *new_instance(Mavlink *mavlink)
+    {
+        return new MavlinkStreamAnalogPot(mavlink);
+    }
+    unsigned get_size()
+    {
+        return MAVLINK_MSG_ID_ANALOG_POT_LEN + MAVLINK_NUM_NON_PAYLOAD_BYTES;
+    }
+
+private:
+    MavlinkOrbSubscription *_sub;
+    uint64_t _analog_time;
+
+    /* do not allow top copying this class */
+    MavlinkStreamAnalogPot(MavlinkStreamAnalogPot &amp;);
+    MavlinkStreamAnalogPot&amp; operator = (const MavlinkStreamAnalogPot &amp;);
+
+protected:
+    explicit MavlinkStreamAnalogPot(Mavlink *mavlink) : MavlinkStream(mavlink),
+        _sub(_mavlink-&gt;add_orb_subscription(ORB_ID(ANALOG_POT))),  // make sure you enter the name of your uORB topic here
+        _pot_time(0)
+    {}
+
+    bool send(const hrt_abstime t)
+    {
+        ANALOG_POT_s _ANALOG_POT;
+
+        if (_sub-&gt;update(&amp;_pot_time, &amp;_ANALOG_POT)) {
+            mavlink_ANALOG_POT_t msg = {};  //make sure mavlink_ANALOG_POT_t is the definition of your custom MAVLink message
+
+            msg.error_count = _ANALOG_POT.error_count;
+            msg.pot_VCCA = _ANALOG_POT.pot_VCCA;
+            msg.ANALOG_POT_deg = _ANALOG_POT.angle_deg;
+            msg.ANALOG_POT_rad = _ANALOG_POT.angle_rad;
+
+      mavlink_msg_ANALOG_POT_send_struct(_mavlink-&gt;get_channel(), &amp;msg);
+
+      return true;
+        }
+
+        return false;
+    }
+
+};
+</pre></div>
+</div>
+<p>Finally append the stream class to the <code class="docutils literal notranslate"><span class="pre">streams_list</span></code> at the bottom of
+the code.</p>
+<div class="code c++ highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">const</span> <span class="n">StreamListItem</span> <span class="n">streams_list</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+
+  <span class="n">StreamListItem</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MavlinkStreamAnalogPot</span><span class="p">::</span><span class="n">new_instance</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">MavlinkStreamAnalogPot</span><span class="p">::</span><span class="n">get_name_static</span><span class="p">,</span>
+  <span class="o">&amp;</span><span class="n">MavlinkStreamAnalogPot</span><span class="p">::</span><span class="n">get_id_static</span><span class="p">),</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="enabling-the-mavlink-stream">
+<h2>Enabling the MAVLink stream<a class="headerlink" href="#enabling-the-mavlink-stream" title="Permalink to this headline">¶</a></h2>
+<p>To enable the MAVLink stream, edit <code class="docutils literal notranslate"><span class="pre">mavlink_main.cpp</span></code> and add relevant messages to <code class="docutils literal notranslate"><span class="pre">configure_streams_to_default</span></code>.</p>
+<p>First include the MAVLink message header in <code class="docutils literal notranslate"><span class="pre">mavlink_main.h</span></code></p>
+<div class="code c++ highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;v2.0/custom_msgs/mavlink_msg_analog_pot.h&gt;</span>
+</pre></div>
+</div>
+<p>Then append the configure function to each case matching a MAVLink mode in which the
+MAVLink stream should be enabled</p>
+<div class="code c++ highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="n">MAVLINK_MODE_NORMAL</span><span class="p">:</span>
+
+  <span class="n">configure_stream_local</span><span class="p">(</span><span class="s2">&quot;ANALOG_POT&quot;</span><span class="p">,</span> <span class="mf">10.0</span><span class="n">f</span><span class="p">);</span>
+
+  <span class="k">break</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Alternately, add a line to the startup script <code class="docutils literal notranslate"><span class="pre">extras.txt</span></code> on the SD card to enable the streaming. &gt; mavlink stream -r 50 -s POT_ANGLE -d
+/dev/ttyACM0</p>
+<p>Parameters are <code class="docutils literal notranslate"><span class="pre">-r</span></code>, <code class="docutils literal notranslate"><span class="pre">-s</span></code> and <code class="docutils literal notranslate"><span class="pre">-d</span></code>, which configures the data rate, MAVLink message, and serial port of the stream.</p>
+</div>
+<div class="section" id="reading-the-mavlink-stream">
+<h2>Reading the MAVLink Stream<a class="headerlink" href="#reading-the-mavlink-stream" title="Permalink to this headline">¶</a></h2>
+<p>To read the MAVLink Stream, QGroundControl should be rebuilt with the custom MAVLink message headers. This simply entails repeating the steps
+in the above section <strong>Creating custom MAVLink message</strong> in <code class="docutils literal notranslate"><span class="pre">qgroundcontrol/libs/mavlink/include/mavlink/v2.0</span></code></p>
+<p><em>MAVLink is a submodule in QGroundControl firmware too</em></p>
+<p>The composition of the .xml message definition becomes important here.
+<code class="docutils literal notranslate"><span class="pre">c++</span>&#160;&#160; <span class="pre">&lt;include&gt;common.xml&lt;/include&gt;</span>&#160;&#160; <span class="pre">&lt;include&gt;ardupilotmega.xml&lt;/include&gt;</span></code>
+Both <code class="docutils literal notranslate"><span class="pre">common.xml</span></code> and <code class="docutils literal notranslate"><span class="pre">ardupilotmega.xml</span></code> definitions must be
+included. The latter is a superset of all MAVLink messages and has an
+include line for <code class="docutils literal notranslate"><span class="pre">common.xml</span></code> within it. However, C++ code generation
+omits nested includes. Hence, both .xml files must be included, and
+omission of either will break the build.</p>
+<div class="section" id="configuring-qgroundcontrol-build">
+<h3>Configuring QGroundControl build<a class="headerlink" href="#configuring-qgroundcontrol-build" title="Permalink to this headline">¶</a></h3>
+<p>Add a file <code class="docutils literal notranslate"><span class="pre">user_config.pri</span></code> in the QGroundControl base directory and
+enter the following line.</p>
+<div class="code qml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MAVLINK_CONF</span> <span class="o">=</span> <span class="n">custom_msgs</span>
+</pre></div>
+</div>
+<p>This will tell QGroundControl to build the customized MAVLink library.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../pinouts/pinouts.html" class="btn btn-neutral float-right" title="Autopilots" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="APM_devel.html" class="btn btn-neutral float-left" title="Ardupilot Development Quickstart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hs293Go
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

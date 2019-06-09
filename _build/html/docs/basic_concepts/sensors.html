@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sensors &mdash; AERO-McGill  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Vehicle Evaluation" href="../design_eval/vehicle_eval.html" />
+    <link rel="prev" title="VTOL airframe" href="vtol_airframe.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Our fleet</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fleet/fleet.html">AERO McGill’s Fleet</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Basic Concepts</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mc_airframe.html">Multicopter Airframes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vtol_airframe.html">VTOL airframe</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sensors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#imu">IMU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compass">Compass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#barometer">Barometer</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Design and Evaluation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../design_eval/vehicle_eval.html">Vehicle Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design_eval/autopilot_eval.html">Autopilot Hardware</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Radio Systems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../radioSystems/dragon_link.html">DragonLink</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../radioSystems/TBS_Crossfire.html">TBS Crossfire</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html">Ardupilot Development Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html#setup-build-environment">Setup Build Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html#setup-git-and-clone-source-code">Setup Git and clone source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html#building-the-code">Building the Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html#setup-sitl-simulator">Setup SITL simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/mavlink_dev.html">MAVLink Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Pinout</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html">Autopilots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#radios-and-transceivers">Radios and Transceivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#companion-computers">Companion Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#others">Others</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AERO-McGill</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Sensors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/basic_concepts/sensors.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sensors">
+<h1>Sensors<a class="headerlink" href="#sensors" title="Permalink to this headline">¶</a></h1>
+<p>A flight control system uses sensors to obtain information on vehicle state in order to perform its primary functions of stabilization and/or navigation. The vehicle states include:</p>
+<ul class="simple">
+<li>Attitude</li>
+<li>Body rotation rates</li>
+<li>Position</li>
+<li>Heading</li>
+<li>Altitude</li>
+<li>Speed / Airspeed</li>
+</ul>
+<p>The flight control system minimally requires an inertial measurement unit (IMU) to for stable flight. Secondly, a compass and a barometer is required to enable some assisted modes. Lastly, a GPS is required to enable fully autonomous modes.</p>
+<div class="section" id="imu">
+<h2>IMU<a class="headerlink" href="#imu" title="Permalink to this headline">¶</a></h2>
+<p>The inertial measurement unit (IMU) consists of a gyroscope and an accelerometer. It is integral in every autopilot board.</p>
+<p>It measures the vehicle’s angular rates and attitude, and enables the autopilot to perform basic flight stabilization.</p>
+</div>
+<div class="section" id="compass">
+<h2>Compass<a class="headerlink" href="#compass" title="Permalink to this headline">¶</a></h2>
+<p>The compass is an electronic magnetometer which measures the vehicle’s heading relative to the earth. It enables the autopilot to control vehicle heading in flight.</p>
+<p>The compass is sensitive to electromagnetic interference (EMI). It should be mounted far away from electrical wiring.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Proper calibration of the compass is critical for the UAV to hold a steady course in flight. Failure to do so can result in</p>
+<ol class="last arabic simple">
+<li>Multicopters may begin circling uncontrollably when attempting to hold position</li>
+<li>All vehicle types may deviate from commanded course and fly away</li>
+</ol>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="barometer">
+<h2>Barometer<a class="headerlink" href="#barometer" title="Permalink to this headline">¶</a></h2>
+<p>The barometer is an absolute pressure sensor which measures the vehicle’s altitude above ground. It enables the autopilot to control the altitude of the vehicle in flight</p>
+<p>GPS
+The GPS enables the autopilot to sense the vehicle’s geographic location. It is necessary for vehicle navigation in automatic flight modes.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../design_eval/vehicle_eval.html" class="btn btn-neutral float-right" title="Vehicle Evaluation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vtol_airframe.html" class="btn btn-neutral float-left" title="VTOL airframe" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hs293Go
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TBS Crossfire &mdash; AERO-McGill  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Ardupilot Development Quickstart" href="../development/APM_devel.html" />
+    <link rel="prev" title="DragonLink" href="dragon_link.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Our fleet</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fleet/fleet.html">AERO McGill’s Fleet</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Basic Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/mc_airframe.html">Multicopter Airframes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/vtol_airframe.html">VTOL airframe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_concepts/perf_param.html">System Performance Parameters</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Basic Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic_setup/AP_hw.html">Basic Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_setup/AP_pwr.html">Powering the autopilot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_setup/AP_radio.html">Radio Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_setup/AP_telem.html">Telemetry Radio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_setup/AP_gps.html">GPS and Compass</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design and Evaluation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../design_eval/vehicle_eval.html">Vehicle Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design_eval/autopilot_eval.html">Autopilot Hardware</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Specific Hardware</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dragon_link.html">DragonLink</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TBS Crossfire</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-setup">Basic Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#binding">Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-receiver-interfaces">Configuring Receiver Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-transmit-power">Setting Transmit Power</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html">Ardupilot Development Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html#setup-build-environment">Setup Build Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html#setup-git-and-clone-source-code">Setup Git and clone source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html#building-the-code">Building the Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/APM_devel.html#setup-sitl-simulator">Setup SITL simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/mavlink_dev.html">MAVLink Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Pinout</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html">Autopilots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#radios-and-transceivers">Radios and Transceivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#companion-computers">Companion Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pinouts/pinouts.html#others">Others</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AERO-McGill</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>TBS Crossfire</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/spec_hardware/TBS_Crossfire.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tbs-crossfire">
+<h1>TBS Crossfire<a class="headerlink" href="#tbs-crossfire" title="Permalink to this headline">¶</a></h1>
+<p>TBS Crossfire is a 433MHz UHF RC system. Compared to other UHF systems, its primary advantage is its support for the CRSF protocol, which offers a very low latency control link with integral telemetry data downlink.</p>
+<p>TBS Crossfire has support for bidirectional telemetry, including MAVLink telemetry for ArduPilot, but this functionality is limited by the low downlink transmit power on Receivers.</p>
+<div class="section" id="basic-setup">
+<h2>Basic Setup<a class="headerlink" href="#basic-setup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="binding">
+<h3>Binding<a class="headerlink" href="#binding" title="Permalink to this headline">¶</a></h3>
+<p>Binding identifies one specific receiver to a transmitter. Procedure:</p>
+<ol class="arabic simple">
+<li>Place the Crossfire Transmitter in Bind Mode by navigating to the Configuration Menu and selecting <strong>Bind</strong></li>
+<li>Power the Crossfire receiver. If the receiver has previously been bound, press the small <strong>Binding</strong> pushbutton on the receiver</li>
+<li>Successful binding is indicated by slowly blinking status LED on the Transmitter and <em>Binding complete</em> message on the LED screen</li>
+<li>Power cycle both transmitter and receiver after successful binding</li>
+</ol>
+</div>
+<div class="section" id="configuring-receiver-interfaces">
+<h3>Configuring Receiver Interfaces<a class="headerlink" href="#configuring-receiver-interfaces" title="Permalink to this headline">¶</a></h3>
+<p>The signal output pins of the Crossfire Receiver can be configured to serve different purposes. Procedure:</p>
+<ol class="arabic simple">
+<li>Power on both the transmitter and receiver</li>
+<li>Navigate to the configuration menu. If the transmitter is communicating with the receiver, an option labelled by the receiver type, i.e. <strong>Rx Diversity</strong> or <strong>Rx Micro</strong> will be available.</li>
+<li><strong>RX Type/Output Map</strong>: Pick a channel and cycle through the available output options.</li>
+</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Option</td>
+<td>Definition</td>
+</tr>
+<tr class="row-even"><td>PWM1-12</td>
+<td>PWM signal pin for one corresponding channel</td>
+</tr>
+<tr class="row-odd"><td>PPM</td>
+<td>PPM signal pin carrying all channels in one stream</td>
+</tr>
+<tr class="row-even"><td>SBus</td>
+<td>SBus RC protocol signal pin</td>
+</tr>
+<tr class="row-odd"><td>RSSI</td>
+<td>RSSI signal pin, encoding signal strength as a PWM signal value</td>
+</tr>
+<tr class="row-even"><td>LQ</td>
+<td>Link Quality pin, encoded signal reception quality as a 0-300% value</td>
+</tr>
+<tr class="row-odd"><td>Serial Tx/Rx</td>
+<td>Serial pins for passing raw serial data</td>
+</tr>
+<tr class="row-even"><td>Mavlink Tx/Rx</td>
+<td>Serial pins for passing MAVLink telemetry data from autopilots</td>
+</tr>
+<tr class="row-odd"><td>CRSF Tx/Rx</td>
+<td>Serial pins for the bidirectional CRSF RC protocol</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Some hardware pins on some receivers cannot be configured to serve all functions listed above.</p>
+</div>
+</div>
+<div class="section" id="setting-transmit-power">
+<h3>Setting Transmit Power<a class="headerlink" href="#setting-transmit-power" title="Permalink to this headline">¶</a></h3>
+<p>The Crossfire transmitter may operate at 6 different transmit power levels. This can be configured via the OLED configurator. Default power output is 100mW which will provide approximately 10 km of range in ideal conditions. Power levels exceeding 500mW may be enabled only if an external battery is connected</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../development/APM_devel.html" class="btn btn-neutral float-right" title="Ardupilot Development Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dragon_link.html" class="btn btn-neutral float-left" title="DragonLink" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hs293Go
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

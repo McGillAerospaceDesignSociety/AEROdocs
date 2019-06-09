@@ -1,0 +1,9 @@
+network={
+	ssid="wpa.mcgill.ca"
+	key_mgmt=WPA-EAP
+	eap=PEAP
+	identity="" #Input McGill username
+	password="" #Input McGill password
+	ca_cert="/etc/ssl/certs/DigiCert_Global_Root_G2.pem"
+	phase2="auth=MSCHAPV2"
+}

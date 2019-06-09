@@ -14,23 +14,39 @@ AERO McGill is a student design team dedicated to building and flying RC aircraf
    docs/fleet/fleet
 
 .. toctree::
-   :caption: Vehicles and Airframes
+   :caption: Basic Concepts
 
-   docs/vehicleEval/vehicle_eval
-   docs/vehicleEval/mc_airframe
-   docs/vehicleEval/vtol_airframe
+   docs/basic_concepts/mc_airframe
+   docs/basic_concepts/vtol_airframe
+   docs/basic_concepts/sensors
+   docs/basic_concepts/perf_param
 
 .. toctree::
-   :caption: Radio Systems
+	:caption: Basic Setup
 
-   docs/radioSystems/dragon_link
-   docs/radioSystems/TBS_Crossfire
+	docs/basic_setup/AP_hw
+	docs/basic_setup/AP_pwr
+	docs/basic_setup/AP_radio
+	docs/basic_setup/AP_telem
+	docs/basic_setup/AP_gps
+
+.. toctree::
+   :caption: Design and Evaluation
+
+   docs/design_eval/vehicle_eval
+   docs/design_eval/autopilot_eval
+
+.. toctree::
+   :caption: Specific Hardware
+
+   docs/spec_hardware/dragon_link
+   docs/spec_hardware/TBS_Crossfire
 
 .. toctree::
    :caption: Development
 
-   docs/APMDevel/APM_devel
-   docs/MAVLink/mavlink_dev
+   docs/development/APM_devel
+   docs/development/mavlink_dev
 
 .. toctree::
    :caption: Pinout
