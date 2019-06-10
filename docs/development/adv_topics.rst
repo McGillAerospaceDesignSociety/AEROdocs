@@ -10,7 +10,7 @@ Model for Soft Mounting
 A soft-mounted autopilot can be modelled as a mass on a vibration isolator. Let :math:`x(t)` be the displacement of the autopilot and :math:`u(t)` be some force acting on the autopilot. This could be the transmitted vibration which typically manifests as AccelZ values exceeding 15m/s/s in Ardupilot logs.
 
 .. figure:: Graphics/fig1.png
-	:width: 400
+	:width: 250
 	:alt: image
 
 The equation of motion is shown below
@@ -29,11 +29,11 @@ Using Laplace transforms, the transfer function from the force acting on the aut
 
 .. math::
 
-	G(s) = \frac{1}{s^2 + 2\zeta \omega_0 s + \omega_0^2}
+	G(s) = \frac{m}{s^2 + 2\zeta \omega_0 s + \omega_0^2}
 
 This transfer function reflects several common considerations in soft-mounting autopilots. Firstly, recall that the damping ratio varies from underdamped (:math:`\zeta <1`), critically damped (:math:`\zeta = 1`), to overdamped (:math:`\zeta > 1`). The mass will no longer oscillate if the system is critically damped or overdamped. Also, the mass will return to its initial position in the shortest time if the system is critically damped.
 
-Hence, vibration isolaters are tuned so that the damping ratio (:math:`\zeta`) approaches 1. The expression :math:`\zeta = \frac{c}{2\sqrt{mk}}` also shows that viscoelastic materials with high damping coefficient :math:`c` contributes to good vibration absorption by driving :math:`\zeta` beyond 1, while excessively elastic materials with high elastic modulus (:math:`k`) drives :math:`\zeta` below 1, rendering the system underdamped and introducing oscillations.
+Hence, vibration isolaters are tuned so that the damping ratio :math:`\zeta` approaches 1. The expression :math:`\zeta = \frac{c}{2\sqrt{mk}}` also shows that viscoelastic materials with high damping coefficient :math:`c` contributes to good vibration absorption by driving :math:`\zeta` beyond 1, while excessively elastic materials with high elastic modulus :math:`k` drives :math:`\zeta` below 1, rendering the system underdamped and introducing oscillations.
 
 Frequency response
 ~~~~~~~~~~~~~~~~~~
@@ -48,7 +48,13 @@ The Bode plot demonstrates the vibration isolator's effect of attenuating high f
 
 On the other hand, if the system is underdamped, then the system exhibits resonance and amplifies oscillations. This is visible from the resonant peaks approaching the natural frequency. Due to material limitations, practical vibration isolators for autopilots can never achieve critical damping. 
 
-Rather, vibration isolators compromise between tuning the cutoff frequency and limiting resonance. The expression :math:`\omega_0 = \sqrt{\frac{k}{m}}'` shows that a low natural frequency is achieved by reducing the elastic modulus (:math:`k`) and increasing the autopilot mass :math:`m`. This lends credence to the known practice of attaching lead weights to the autopilot to reduce the cutoff frequency. Nevertheless, the magnitude of the resonance peak increases with system mass, so weighing down the autopilot has hazards.
+Rather, vibration isolators compromise between tuning the cutoff frequency and limiting resonance. Referring back to the expression for the natural frequency
+
+.. math::
+	
+	\omega_0 = \sqrt{\frac{k}{m}}
+
+This shows that a low natural frequency is achieved with a low elastic modulus :math:`k` and high autopilot mass :math:`m`. This lends credence to the known practice of attaching lead weights to the autopilot to reduce the cutoff frequency. Nevertheless, the magnitude of the resonance peak increases with system mass, so weighing down the autopilot has hazards.
 
 
 Sources of vibration
