@@ -31,7 +31,7 @@ Using Laplace transforms, the transfer function from the force acting on the aut
 
 	G(s) = \frac{1}{s^2 + 2\zeta \omega_0 s + \omega_0^2}
 
-This transfer function reflects several common considerations in soft-mounting autopilots. Firstly, recall that the damping ratio varies from underdamped (:math:`\zeta <1 ), critically damped (:math:`\zeta = 1`), to overdamped (:math:`\zeta > 1`). The mass will no longer oscillate if the system is critically damped or overdamped. Also, the mass will return to its initial position in the shortest time if the system is critically damped.
+This transfer function reflects several common considerations in soft-mounting autopilots. Firstly, recall that the damping ratio varies from underdamped (:math:`\zeta <1`), critically damped (:math:`\zeta = 1`), to overdamped (:math:`\zeta > 1`). The mass will no longer oscillate if the system is critically damped or overdamped. Also, the mass will return to its initial position in the shortest time if the system is critically damped.
 
 Hence, vibration isolaters are tuned so that the damping ratio (:math:`\zeta`) approaches 1. The expression :math:`\zeta = \frac{c}{2\sqrt{mk}}` also shows that viscoelastic materials with high damping coefficient :math:`c` contributes to good vibration absorption by driving :math:`\zeta` beyond 1, while excessively elastic materials with high elastic modulus (:math:`k`) drives :math:`\zeta` below 1, rendering the system underdamped and introducing oscillations.
 
