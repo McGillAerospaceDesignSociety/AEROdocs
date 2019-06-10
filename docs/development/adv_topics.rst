@@ -48,7 +48,7 @@ The Bode plot demonstrates the vibration isolator's effect of attenuating high f
 
 On the other hand, if the system is underdamped, then the system exhibits the undesirable effect of resonance and amplifies oscillations. This is visible from the resonant peaks approaching the natural frequency. Due to material limitations, practical vibration isolators for autopilots can never achieve critical damping. 
 
-Rather, vibration isolators compromise between tuning the cutoff frequency and limiting resonance. The expression :math:`\omega_0 = \sqrt{\frac{k}{m}}' shows that a low natural frequency is achieved by reducing the elastic modulus (:math:`k`) and increasing the autopilot mass :math:`m`. This lends credence to the known practice of attaching lead weights to the autopilot to reduce the cutoff frequency. Nevertheless, the magnitude of the resonance peak increases with system mass, so weighing down the autopilot has hazards.
+Rather, vibration isolators compromise between tuning the cutoff frequency and limiting resonance. The expression :math:`\omega_0 = \sqrt{\frac{k}{m}}'` shows that a low natural frequency is achieved by reducing the elastic modulus (:math:`k`) and increasing the autopilot mass :math:`m`. This lends credence to the known practice of attaching lead weights to the autopilot to reduce the cutoff frequency. Nevertheless, the magnitude of the resonance peak increases with system mass, so weighing down the autopilot has hazards.
 
 
 Sources of vibration
