@@ -13,15 +13,15 @@ The autopilot should be positioned as close to the vehicle’s center of gravity
 
 
 .. figure:: Graphics/fig1.png
-   :alt: image
+	:width: 400
+	:alt: image
 
 
-Vibration Isolation
--------------------
+Vibration Damping
+-----------------
 
-The autopilot should be mounted on vibration absorbing material, which isolates the sensitive sensors from vibrations. Soft foam such as 3M Autopilot Damping Foams, gel pads, and mounting tables with rubber damping balls are effective in vibration isolation. 
+The autopilot should be mounted on vibration absorbing material, which isolates the sensitive sensors from vibrations. Soft foam such as 3M Damping Foam, gel pads, and mounting tables with rubber damping balls are effective in vibration isolation. 
 
 .. note::
-	Some autopilots 
-
+	Some autopilots incorporates vibration damping for sensors. This is typically insufficient since the vibration damping in autopilots tend to be tuned to a specific class of vehicle.
 

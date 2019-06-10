@@ -7,7 +7,8 @@ Powering the autopilot
 Connect the output port of a power module to the power port of the Autopilot with a 6-wire cable.
 
 .. figure:: Graphics/fig2.png
-   :alt: image
+	:width: 400
+	:alt: image
 
 .. note::
 	A power module supplies stable and filtered power at 5.4V for the autopilot, and measures battery voltage and current drawn from the battery.

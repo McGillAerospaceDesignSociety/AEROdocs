@@ -22,5 +22,5 @@ Main propeller performance parameters are thrust and torque. They are modelled b
 
 .. math::
 	
-	T = k_T \rho n^2 D^4 
+	T = k_T \rho n^2 D^4 \\
 	Q = k_Q \rho n^2 D^5

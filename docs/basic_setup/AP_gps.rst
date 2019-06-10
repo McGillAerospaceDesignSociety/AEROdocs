@@ -8,4 +8,5 @@ Connect the output port of the GPS module to the GPS port of the autopilot using
 Most GPS modules have an integral compass. Position the GPS module at a distance from other electronics to reduce magnetic interference on the compass. Mount the GPS module with the heading mark arrow pointing towards the front of the vehicle. 
 
 .. figure:: Graphics/fig5.png
-   :alt: image
+	:width: 400
+	:alt: image
