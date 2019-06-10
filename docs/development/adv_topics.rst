@@ -19,7 +19,7 @@ The equation of motion is shown below
 
 	m \ddot{x}(t) + c \dot{x}(t) + k x(t) = u(t)
 
-The foregoing equation can be rewritten, by using damping ratio :math:`\zeta = \frac{c}{2\sqrt{mk}}` and natural frequency :math:`\omega_0 = \sqrt{\frac{k}{m}}'
+The foregoing equation can be rewritten, by using damping ratio :math:`\zeta = \frac{c}{2\sqrt{mk}}` and natural frequency :math:`\omega_0 = \sqrt{\frac{k}{m}}`
 
 .. math::
 
