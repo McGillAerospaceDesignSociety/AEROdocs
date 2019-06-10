@@ -27,7 +27,7 @@ The foregoing equation can be rewritten, by using damping ratio :math:`\zeta = \
 
 Using Laplace transforms, the transfer function from the force acting on the autopilot to the displacement of the autopilot can be obtained
 
-..math::
+.. math::
 
 	G(s) = \frac{1}{s^2 + 2\zeta \omega_0 s + \omega_0^2}
 
@@ -46,7 +46,7 @@ Next, a Bode plot of the foregoing transfer function can be drawn to provide inf
 
 The Bode plot demonstrates the vibration isolator's effect of attenuating high frequency motion. In the case of critical damping (light green line), then the vibration isolator progressively attenuates motion past a cutoff frequency, which is exactly the natural frequency :math:`\omega_0`. This echoes the idea that vibration isolation acts like an electronic low pass filter. 
 
-On the other hand, if the system is underdamped, then the system exhibits the undesirable effect of resonance and amplifies oscillations. This is visible from the resonant peaks approaching the natural frequency. Due to material limitations, practical vibration isolators for autopilots can never achieve critical damping. 
+On the other hand, if the system is underdamped, then the system exhibits resonance and amplifies oscillations. This is visible from the resonant peaks approaching the natural frequency. Due to material limitations, practical vibration isolators for autopilots can never achieve critical damping. 
 
 Rather, vibration isolators compromise between tuning the cutoff frequency and limiting resonance. The expression :math:`\omega_0 = \sqrt{\frac{k}{m}}'` shows that a low natural frequency is achieved by reducing the elastic modulus (:math:`k`) and increasing the autopilot mass :math:`m`. This lends credence to the known practice of attaching lead weights to the autopilot to reduce the cutoff frequency. Nevertheless, the magnitude of the resonance peak increases with system mass, so weighing down the autopilot has hazards.
 
