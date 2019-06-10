@@ -6,7 +6,7 @@ Vibration Damping
 The ideal vibration absorbing material is viscoelastic, which dissipates the energy in vibrations and does not behave like a spring. Ideal vibration damping attenuates high frequency motion. 
 
 Model for Soft Mounting
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 A soft-mounted autopilot can be modelled as a mass on a vibration isolator. Let :math:`x(t)` be the displacement of the autopilot and :math:`u(t)` be some force acting on the autopilot. This could be the transmitted vibration which typically manifests as AccelZ values exceeding 15m/s/s in Ardupilot logs.
 
 .. figure:: Graphics/fig1.png
@@ -31,7 +31,7 @@ Using Laplace transforms, the transfer function from the force acting on the aut
 
 	G(s) = \frac{m}{s^2 + 2\zeta \omega_0 s + \omega_0^2}
 
-This transfer function reflects several common considerations in soft-mounting autopilots. Firstly, recall that the damping ratio varies from underdamped (:math:`\zeta <1`), critically damped (:math:`\zeta = 1`), to overdamped (:math:`\zeta > 1`). The mass will no longer oscillate if the system is critically damped or overdamped. Also, the mass will return to its initial position in the shortest time if the system is critically damped.
+This transfer function reflects several common considerations in soft-mounting autopilots. Firstly, recall that the damping ratio varies from underdamped (:math:`\zeta <1`), critically damped (:math:`\zeta = 1`), to overdamped (:math:`\zeta > 1`). The mass will no longer oscillate if the system is critically damped or overdamped. 
 
 Hence, vibration isolaters are tuned so that the damping ratio :math:`\zeta` approaches 1. The expression :math:`\zeta = \frac{c}{2\sqrt{mk}}` also shows that viscoelastic materials with high damping coefficient :math:`c` contributes to good vibration absorption by driving :math:`\zeta` beyond 1, while excessively elastic materials with high elastic modulus :math:`k` drives :math:`\zeta` below 1, rendering the system underdamped and introducing oscillations.
 
@@ -65,6 +65,7 @@ The most important source of vibration is the motors. All motors vibrate, with f
 Another consequence of motor vibration is that slow motors driving large propellers induce low frequency, high amplitude vibrations that are hard to mitigate using viscoelastic vibration isolators. For this reason, heavy quadcopters using very large propellers (exceeding than 30-inch) are uncommon.
 
 Other sources of vibration that can be mitigated by good vehicle design and maintenance include:
+
 -	Damaged or unbalanced motor or propellers acts like a rotating unbalance, contributing to very severe vibration
 -	Flexible structural components like airframe plates and arms cause asynchronous vibration
 -	Unsecure fasteners and components inside the airframe cause vibration
