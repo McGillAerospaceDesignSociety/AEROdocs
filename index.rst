@@ -47,6 +47,7 @@ AERO McGill is a student design team dedicated to building and flying RC aircraf
 
    docs/development/APM_devel
    docs/development/mavlink_dev
+   docs/development/adv_topics
 
 .. toctree::
    :caption: Pinout
